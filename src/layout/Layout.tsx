@@ -8,7 +8,7 @@ const Layout: React.FC<LayoutProps> = () => {
     return (
         <div>
             <Header />
-            <main className="w-full m-auto mt-[30px] mb-[10px]">
+            <main >
                 <Outlet />
             </main>
         </div>
