@@ -67,6 +67,44 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 const Header: React.FC<HeaderProps> = () => {
+
+    const id = window.location.href.split('/').at(-1)
+
+    console.log(id);
+
+    const headBtn = () => {
+        if (id === 'agency') {
+            return (
+                <div className="flex items-center">
+                    <img src="/img/plus-circle.svg" className="w-[20px]" alt="" />
+                    <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">Создать агентства</p>
+                </div >
+            )
+        } else if (id === 'hotel') {
+            return (
+                <div className="flex items-center">
+                    <img src="/img/plus-circle.svg" className="w-[20px]" alt="" />
+                    <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">Создать отель</p>
+                </div >
+            )
+        } else if (id === 'branches') {
+            return (
+                <div className="flex items-center">
+                    <img src="/img/plus-circle.svg" className="w-[20px]" alt="" />
+                    <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">Создать филиалы</p>
+                </div >
+            )
+        } else if (id === '') {
+            return (
+                <div className="flex items-center">
+                    <img src="/img/plus-circle.svg" className="w-[20px]" alt="" />
+                    <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">Создать клиента</p>
+                </div >
+            )
+        }
+    }
+
+
     const theme = useTheme();
     const [open, setOpen] = useState(false);
 
@@ -96,10 +134,11 @@ const Header: React.FC<HeaderProps> = () => {
                             <img src="/img/logo.svg" className={`${open ? "hidden" : 'block'} w-[120px]`} alt="" />
 
                             <div className={`${open ? "ml-[20%]" : 'justify-between'} w-[80%] flex justify-between items-center`}>
-                                <div className="flex items-center">
-                                    <img src="/img/plus-circle.svg" className="w-[20px]" alt="" />
-                                    <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">Создать клиента</p>
-                                </div >
+
+                                {
+                                    headBtn()   
+                                }
+
                                 <div className="flex items-center">
                                     <img src="/img/settings.svg" className="w-[20px]" alt="" />
                                     <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">Создать блог</p>
@@ -159,10 +198,10 @@ const Header: React.FC<HeaderProps> = () => {
                             </Link>
 
                             <nav className="flex flex-col justify-between h-[130px] pl-10 mt-[15px] text-[16px] text-[#fff] ">
-                                <a href="#">Клиенты</a>
-                                <a href="#">Отели</a>
-                                <a href="#">Тур Агентства</a>
-                                <a href="#">Филиалы</a>
+                                <Link to={"/"} ><p>Клиенты</p></Link>
+                                <Link to={"/hotel"} ><p>Отели</p></Link>
+                                <Link to={"/agency"} ><p>Тур Агентства</p></Link>
+                                <Link to={"/branches"} ><p>Филиалы</p></Link>
                             </nav>
                         </div>
                     </List>
