@@ -9,28 +9,46 @@
   ],
   "customers": [
     {
-      "client": "Борисова Ольга",
-      "status": "В процессе",
-      "application": "10 января",
-      "takeoff": [
-        {
-          "city": "Ташкент",
-          "country": "Узбекистан"
-        }
-      ],
-      "visit": [
-        {
-          "city": "Дубай",
-          "country": "ОАЭ"
-        }
-      ],
-      "price": 25000000,
-      "arrival": [
-        {
-          "departure": "В: 30 января, 2023 | 06:35",
-          "arrived": "П: 31 января, 2023 | 14:35"
-        }
-      ]
+      "client": "Mustafa",
+      "date": "",
+      "city": "samarkand",
+      "telNumber": "13231321312",
+      "email": "mis@gmail.com",
+      "secTelNumber": "21212212",
+      "status": "paid",
+      "branch": "berlin",
+      "from_city": "samarkand",
+      "to_city": "berlin",
+      "hotel": "mumbai",
+      "id": 1
+    },
+    {
+      "client": "Mustafa",
+      "date": "",
+      "city": "samarkand",
+      "telNumber": "13231321312",
+      "email": "mis@gmail.com",
+      "secTelNumber": "21212212",
+      "status": "paid",
+      "branch": "berlin",
+      "from_city": "samarkand",
+      "to_city": "berlin",
+      "hotel": "mumbai",
+      "id": 2
+    },
+    {
+      "client": "Mustafa",
+      "date": "2023-06-01",
+      "city": "samarkand",
+      "telNumber": "13231321312",
+      "email": "mis@gmail.com",
+      "secTelNumber": "21212212",
+      "status": "paid",
+      "branch": "berlin",
+      "from_city": "samarkand",
+      "to_city": "berlin",
+      "hotel": "mumbai",
+      "id": 3
     }
   ]
 }
