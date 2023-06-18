@@ -1,4 +1,5 @@
 import React from 'react';
+import HotelTable from '../components/HotelTable';
 
 interface HotelProps {
 
@@ -36,6 +37,8 @@ const Hotel: React.FC<HotelProps> = () => {
                 </div>
 
             </div>
+
+            <HotelTable />
 
         </div>
     );

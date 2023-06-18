@@ -36,10 +36,11 @@ const AddClient: React.FC<AddClientProps> = () => {
             branch: branches,
             status: statuses,
             hotel: hotels,
+            cost: 230000,
+            takeOff: 'В: 30 января, 2023 | 06:35',
+            arrive: 'П: 31 января, 2023 | 14:35',
             ...data
         };
-
-
 
         axios.post(BASE_URL + "/customers", data)
             .then((res) => console.log(res.data));
@@ -125,7 +126,6 @@ const AddClient: React.FC<AddClientProps> = () => {
                                     <select
                                         className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333] mb-[20px]"
                                         onClick={(e: any) => setStatuses(e.target.value)}
-                                    // {...register("status", { pattern: /^[A-Za-z]+$/i })}
                                     >
                                         <option value="Новое обращение">Новое обращение</option>
                                         <option value="Предоплата">Предоплата</option>
@@ -134,11 +134,6 @@ const AddClient: React.FC<AddClientProps> = () => {
                                         <option value="Проблемы с клиентом">Проблемы с клиентом</option>
                                         <option value="Прилетел">Прилетел</option>
                                     </select>
-                                    {/* <input
-                                        className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333]"
-                                        type="text"
-                                        {...register("status", { pattern: /^[A-Za-z]+$/i })}
-                                    /> */}
                                 </label>
 
                                 <label>
@@ -146,7 +141,6 @@ const AddClient: React.FC<AddClientProps> = () => {
                                     <select
                                         className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333] mb-[20px]"
                                         onClick={(e: any) => setBranches(e.target.value)}
-                                    // {...register("branch", { pattern: /^[A-Za-z]+$/i })}
                                     >
                                         <option value="Анкара">Анкара</option>
                                         <option value="Нью Йорк">Нью Йорк</option>
@@ -155,11 +149,6 @@ const AddClient: React.FC<AddClientProps> = () => {
                                         <option value="Грамаду">Грамаду</option>
                                         <option value="Стамбул">Стамбул</option>
                                     </select>
-                                    {/* <input
-                                        className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333]"
-                                        type="text"
-                                        {...register("branch", { pattern: /^[A-Za-z]+$/i })}
-                                    /> */}
                                 </label>
 
                                 <div className="flex justify-between items-center mt-[20px]">
@@ -186,7 +175,6 @@ const AddClient: React.FC<AddClientProps> = () => {
                                     <p className="font-semibold">Отель</p>
                                     <select
                                         className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333] mb-[20px]"
-                                        // {...register("hotel", { pattern: /^[A-Za-z]+$/i })}
                                         onClick={(e: any) => setHotels(e.target.value)}
                                     >
                                         <option value="The Ankara Hotel">The Ankara Hotel</option>
@@ -196,11 +184,6 @@ const AddClient: React.FC<AddClientProps> = () => {
                                         <option value="Exclusive Gramado by Gramado Parks">Exclusive Gramado by Gramado Parks</option>
                                         <option value="Henna Hotel Istanbul ">Henna Hotel Istanbul </option>
                                     </select>
-                                    {/* <input
-                                        className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333]"
-                                        type="text"
-                                        {...register("hotel", { pattern: /^[A-Za-z]+$/i })}
-                                    /> */}
                                 </label>
                             </div>
                         </div>

@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import axios from 'axios';
 let BASE_URL: string = "http://localhost:3103";
 
-interface TableProps {
+interface HoteiTableProps {
 
 }
 
@@ -32,8 +32,7 @@ type typeClient = {
     exampleRequired: string;
 };
 
-
-const TableList: React.FC<TableProps> = () => {
+const HotelTable: React.FC<HoteiTableProps> = () => {
     const [person, setPerson] = useState<Array<typeClient>>([]);
 
     useEffect(() => {
@@ -41,20 +40,19 @@ const TableList: React.FC<TableProps> = () => {
             .then((res) => setPerson(res.data));
     }, []);
 
-
     return (
         <div>
             <TableContainer sx={{ border: 'none', marginTop: '30px', boxShadow: 'none', background: '#F1F2F4' }} component={Paper}>
                 <Table sx={{ minWidth: 650, }} aria-label="simple table">
                     <TableHead>
                         <TableRow sx={{ height: '80px' }} >
-                            <TableCell sx={{ color: '#828282', fontSize: '13px' }}>Клиент</TableCell>
-                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align='center' >Статус</TableCell>
-                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="center">Дата обращения</TableCell>
-                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="center">Вылет</TableCell>
-                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="center">Страна посещения</TableCell>
-                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="center">Общая стоимость</TableCell>
-                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="center">Вылет и прилет</TableCell>
+                            <TableCell sx={{ color: '#828282', fontSize: '13px' }}>Отели</TableCell>
+                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align='left' >Город</TableCell>
+                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="left">цена за ночь</TableCell>
+                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="left">Номер</TableCell>
+                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="left"></TableCell>
+                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="left"></TableCell>
+                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="center"></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -67,24 +65,16 @@ const TableList: React.FC<TableProps> = () => {
                                     <img className='mr-[30px]' src="/img/dash.svg" alt="" />
                                     {row.client}
                                 </TableCell>
-                                <TableCell sx={{ fontWeight: 500, fontSize: '14px' }} align="right">{row.status}</TableCell>
-                                <TableCell sx={{ fontWeight: 500, fontSize: '14px' }} align="center">{row.date}</TableCell>
-                                <TableCell sx={{ fontWeight: 500, fontSize: '14px' }} align="center">{row.from_city}</TableCell>
-                                <TableCell sx={{ fontWeight: 500, fontSize: '14px' }} align="center">{row.to_city}</TableCell>
-                                <TableCell sx={{ fontWeight: 500, fontSize: '14px' }} align="center">{row.cost.toLocaleString("ru-RU") + " сум"}</TableCell>
-                                <TableCell sx={{ fontWeight: 500, fontSize: '14px' }} align="center">
-                                    <div className='font-[500]'>
-                                        <p>{row.takeOff}</p>
-                                        <span>{row.arrive}</span>
-                                    </div>
-                                </TableCell>
+                                <TableCell sx={{ fontWeight: 500, fontSize: '14px' }} align="left">{row.status}</TableCell>
+                                <TableCell sx={{ fontWeight: 500, fontSize: '14px' }} align="left">{row.date}</TableCell>
+                                <TableCell sx={{ fontWeight: 500, fontSize: '14px' }} align="left">{row.from_city}</TableCell>
                             </TableRow>
                         ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+                </TableBody>
+            </Table>
+        </TableContainer>
         </div >
     );
 };
 
-export default TableList;
+export default HotelTable;
