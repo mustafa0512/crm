@@ -69,7 +69,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 const Header: React.FC<HeaderProps> = () => {
 
     const id = window.location.href.split('/').at(-1)
-    
+
     const headBtn = () => {
         if (id === 'agency') {
             return (
@@ -80,10 +80,12 @@ const Header: React.FC<HeaderProps> = () => {
             )
         } else if (id === 'hotel') {
             return (
-                <div className="flex items-center">
-                    <img src="/img/plus-circle.svg" className="w-[20px]" alt="" />
-                    <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">Создать отель</p>
-                </div >
+                <Link to={'/addhotel'}>
+                    <div className="flex items-center">
+                        <img src="/img/plus-circle.svg" className="w-[20px]" alt="" />
+                        <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">Создать отель</p>
+                    </div >
+                </Link>
             )
         } else if (id === 'branches') {
             return (

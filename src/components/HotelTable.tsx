@@ -15,29 +15,19 @@ interface HoteiTableProps {
 
 type typeClient = {
     id: number
-    client: string;
-    date: string;
-    email: string;
     city: string;
-    status: string;
+    hotelName: string;
     telNumber: number;
-    branch: string;
-    secTelNumber: number;
-    hotel: string
-    from_city: string
-    to_city: string
-    cost: number
-    takeOff: string
-    arrive: string
+    pricePerNight: string
     exampleRequired: string;
 };
 
 const HotelTable: React.FC<HoteiTableProps> = () => {
-    const [person, setPerson] = useState<Array<typeClient>>([]);
+    const [otel, setOtel] = useState<Array<typeClient>>([]);
 
     useEffect(() => {
-        axios.get(BASE_URL + "/customers")
-            .then((res) => setPerson(res.data));
+        axios.get(BASE_URL + "/hotels")
+            .then((res) => setOtel(res.data));
     }, []);
 
     return (
@@ -56,23 +46,23 @@ const HotelTable: React.FC<HoteiTableProps> = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {person.map((row) => (
+                        {otel.map((row) => (
                             <TableRow
                                 key={row.id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 }, height: '80px' }}
                             >
                                 <TableCell sx={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 500, marginTop: '10px' }} component="th" scope="row">
                                     <img className='mr-[30px]' src="/img/dash.svg" alt="" />
-                                    {row.client}
+                                    {row.hotelName}
                                 </TableCell>
-                                <TableCell sx={{ fontWeight: 500, fontSize: '14px' }} align="left">{row.status}</TableCell>
-                                <TableCell sx={{ fontWeight: 500, fontSize: '14px' }} align="left">{row.date}</TableCell>
-                                <TableCell sx={{ fontWeight: 500, fontSize: '14px' }} align="left">{row.from_city}</TableCell>
+                                <TableCell sx={{ fontWeight: 500, fontSize: '14px' }} align="left">{row.city}</TableCell>
+                                <TableCell sx={{ fontWeight: 500, fontSize: '14px' }} align="left">{row.pricePerNight + " сум"}</TableCell>
+                                <TableCell sx={{ fontWeight: 500, fontSize: '14px' }} align="left">{row.telNumber}</TableCell>
                             </TableRow>
                         ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </div >
     );
 };

@@ -58,5 +58,22 @@
       "to_city": "Moscov",
       "id": 3
     }
-  ]
+  ],
+  "hotels": [
+    {
+      "hotelName": "Registan",
+      "telNumber": "908765544",
+      "city": "samarkand",
+      "pricePerNight": "220000",
+      "id": 1
+    },
+    {
+      "hotelName": "Registan",
+      "telNumber": "908765544",
+      "city": "samarkand",
+      "pricePerNight": "220000",
+      "id": 2
+    }
+  ], 
+  "branches": []
 }
