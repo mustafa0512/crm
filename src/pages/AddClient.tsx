@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Link } from "react-router-dom";
@@ -10,35 +10,19 @@ type Inputs = {
     client: string;
     date: string;
     email: string;
-    password: number;
     city: string;
-    status: string;
     telNumber: number;
-    branch: string;
     secTelNumber: number;
-    hotel: string
     from_city: string
     to_city: string
     exampleRequired: string;
 };
 
-type typeUser = {
-    client: string;
-    date: string;
-    email: string;
-    password: number;
-    city: string;
-    status: string;
-    telNumber: number;
-    branch: string;
-    secTelNumber: number;
-    hotel: string
-    from_city: string
-    to_city: string
-    id: number;
-};
 
 const AddClient: React.FC<AddClientProps> = () => {
+    const [branches, setBranches] = useState<string | undefined>();
+    const [statuses, setStatuses] = useState<string | undefined>();
+    const [hotels, setHotels] = useState<string | undefined>();
 
     const {
         register,
@@ -47,6 +31,15 @@ const AddClient: React.FC<AddClientProps> = () => {
     } = useForm<Inputs>();
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
+
+        data = {
+            branch: branches,
+            status: statuses,
+            hotel: hotels,
+            ...data
+        };
+
+
 
         axios.post(BASE_URL + "/customers", data)
             .then((res) => console.log(res.data));
@@ -129,39 +122,44 @@ const AddClient: React.FC<AddClientProps> = () => {
                             <div className="text-[#333333] text-[18px]">
                                 <label>
                                     <p className="font-semibold">Статус</p>
-                                    {/* <select
+                                    <select
                                         className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333] mb-[20px]"
-                                        {...register("status", { pattern: /^[A-Za-z]+$/i })}
+                                        onClick={(e: any) => setStatuses(e.target.value)}
+                                    // {...register("status", { pattern: /^[A-Za-z]+$/i })}
                                     >
-                                        <option value="">В поцессе</option>
-                                        <option value="">Оплачен</option>
-                                        <option value="">Прилетел</option>
-                                    </select> */}
-                                    <input
+                                        <option value="Новое обращение">Новое обращение</option>
+                                        <option value="Предоплата">Предоплата</option>
+                                        <option value="Оплачен полностью">Оплачен полностью</option>
+                                        <option value="Вылетел">Вылетел</option>
+                                        <option value="Проблемы с клиентом">Проблемы с клиентом</option>
+                                        <option value="Прилетел">Прилетел</option>
+                                    </select>
+                                    {/* <input
                                         className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333]"
                                         type="text"
                                         {...register("status", { pattern: /^[A-Za-z]+$/i })}
-                                    />
+                                    /> */}
                                 </label>
 
                                 <label>
                                     <p className="font-semibold">Филиал</p>
-                                    {/* <select
+                                    <select
                                         className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333] mb-[20px]"
-                                        {...register("branch", { pattern: /^[A-Za-z]+$/i })}
+                                        onClick={(e: any) => setBranches(e.target.value)}
+                                    // {...register("branch", { pattern: /^[A-Za-z]+$/i })}
                                     >
-                                        <option value="">Нью Йорк</option>
-                                        <option value="">Анкара</option>
-                                        <option value="">Берлин</option>
-                                        <option value="">Осло</option>
-                                        <option value="">Грамаду</option>
-                                        <option value="">Стамбул</option>
-                                    </select> */}
-                                    <input
+                                        <option value="Анкара">Анкара</option>
+                                        <option value="Нью Йорк">Нью Йорк</option>
+                                        <option value="Берлин">Берлин</option>
+                                        <option value="Осло">Осло</option>
+                                        <option value="Грамаду">Грамаду</option>
+                                        <option value="Стамбул">Стамбул</option>
+                                    </select>
+                                    {/* <input
                                         className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333]"
                                         type="text"
                                         {...register("branch", { pattern: /^[A-Za-z]+$/i })}
-                                    />
+                                    /> */}
                                 </label>
 
                                 <div className="flex justify-between items-center mt-[20px]">
@@ -186,22 +184,23 @@ const AddClient: React.FC<AddClientProps> = () => {
 
                                 <label>
                                     <p className="font-semibold">Отель</p>
-                                    {/* <select
+                                    <select
                                         className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333] mb-[20px]"
-                                        {...register("hotel", { pattern: /^[A-Za-z]+$/i })}
+                                        // {...register("hotel", { pattern: /^[A-Za-z]+$/i })}
+                                        onClick={(e: any) => setHotels(e.target.value)}
                                     >
-                                        <option value="">Хьюстон</option>
-                                        <option value="">Мумбаи</option>
-                                        <option value="">Регистон</option>
-                                        <option value="">Six Senses Laamu</option>
-                                        <option value="">Bless Hotel</option>
-                                        <option value="">Hotel Colline de France</option>
-                                    </select> */}
-                                    <input
+                                        <option value="The Ankara Hotel">The Ankara Hotel</option>
+                                        <option value="Riu Plaza New York Times Square">Riu Plaza New York Times Square</option>
+                                        <option value="Berlin Marriott Hotel">Berlin Marriott Hotel</option>
+                                        <option value="Hotel Verdandi Oslo">Hotel Verdandi Oslo</option>
+                                        <option value="Exclusive Gramado by Gramado Parks">Exclusive Gramado by Gramado Parks</option>
+                                        <option value="Henna Hotel Istanbul ">Henna Hotel Istanbul </option>
+                                    </select>
+                                    {/* <input
                                         className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333]"
                                         type="text"
                                         {...register("hotel", { pattern: /^[A-Za-z]+$/i })}
-                                    />
+                                    /> */}
                                 </label>
                             </div>
                         </div>

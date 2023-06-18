@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -13,33 +13,32 @@ interface TableProps {
 
 }
 
-function createData(
-    name: string,
-    calories: string,
-    fat: string,
-    carbs: string,
-    protein: string,
-    a: number,
-    v: string,
-) {
-    return { name, calories, fat, carbs, protein, a, v };
-}
-
-const rows = [
-    createData('Борисова Ольга', 'В процессе', '10 января,', 'Узбекистан', 'ОАЭ', 25000000, 'В: 30 января, 2023 | 06:35'),
-    createData('Борисова Ольга', 'В процессе', '10 января,', 'Узбекистан', 'ОАЭ', 25000000, 'В: 30 января, 2023 | 06:35'),
-    createData('Борисова Ольга', 'В процессе', '10 января,', 'Узбекистан', 'ОАЭ', 25000000, 'В: 30 января, 2023 | 06:35'),
-    createData('Борисова Ольга', 'В процессе', '10 января,', 'Узбекистан', 'ОАЭ', 25000000, 'В: 30 января, 2023 | 06:35'),
-    createData('Борисова Ольга', 'В процессе', '10 января,', 'Узбекистан', 'ОАЭ', 25000000, 'В: 30 января, 2023 | 06:35'),
-];
+type typeClient = {
+    client: string;
+    date: string;
+    email: string;
+    city: string;
+    status: string;
+    telNumber: number;
+    branch: string;
+    secTelNumber: number;
+    hotel: string
+    from_city: string
+    to_city: string
+    exampleRequired: string;
+};
 
 
 const TableList: React.FC<TableProps> = () => {
+    const [person, setPerson] = useState<Array<typeClient>>([]);
 
     useEffect(() => {
         axios.get(BASE_URL + "/customers")
-            .then((res) => console.log(res.data));
+            .then((res) => setPerson(res.data));
     }, []);
+
+    console.log(person);
+    
 
     return (
         <div>
@@ -57,19 +56,19 @@ const TableList: React.FC<TableProps> = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
+                        {person.map((row) => (
                             <TableRow
                                 key={row.name}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 }, height: '80px' }}
                             >
                                 <TableCell sx={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 600, marginTop: '10px' }} component="th" scope="row">
                                     <img className='mr-[30px]' src="/img/dash.svg" alt="" />
-                                    {row.name}
+                                    {row.client}
                                 </TableCell>
-                                <TableCell sx={{ fontWeight: 600, fontSize: '14px' }} align="right">{row.calories}</TableCell>
-                                <TableCell sx={{ fontWeight: 600, fontSize: '14px' }} align="center">{row.fat}</TableCell>
-                                <TableCell sx={{ fontWeight: 600, fontSize: '14px' }} align="center">{row.carbs}</TableCell>
-                                <TableCell sx={{ fontWeight: 600, fontSize: '14px' }} align="center">{row.protein}</TableCell>
+                                <TableCell sx={{ fontWeight: 600, fontSize: '14px' }} align="right">{row.status}</TableCell>
+                                <TableCell sx={{ fontWeight: 600, fontSize: '14px' }} align="center">{row.date}</TableCell>
+                                <TableCell sx={{ fontWeight: 600, fontSize: '14px' }} align="center">{row.from_city}</TableCell>
+                                <TableCell sx={{ fontWeight: 600, fontSize: '14px' }} align="center">{row.to_city}</TableCell>
                                 <TableCell sx={{ fontWeight: 600, fontSize: '14px' }} align="center">{row.a}</TableCell>
                                 <TableCell sx={{ fontWeight: 600, fontSize: '14px' }} align="center">{row.v}</TableCell>
                             </TableRow>

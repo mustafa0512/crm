@@ -69,9 +69,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 const Header: React.FC<HeaderProps> = () => {
 
     const id = window.location.href.split('/').at(-1)
-
-    console.log(id);
-
+    
     const headBtn = () => {
         if (id === 'agency') {
             return (
