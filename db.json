@@ -74,6 +74,95 @@
       "pricePerNight": "220000",
       "id": 2
     }
-  ], 
-  "branches": []
+  ],
+  "agency": [
+    {
+      "agencyName": "Registan",
+      "telNumber": "13231321312",
+      "city": "Berlin",
+      "id": 1
+    },
+    {
+      "agencyName": "Registan",
+      "telNumber": "13231321312",
+      "city": "Berlin",
+      "id": 2
+    },
+    {
+      "agencyName": "Registan",
+      "telNumber": "13231321312",
+      "city": "Berlin",
+      "id": 3
+    },
+    {
+      "agencyName": "Registan",
+      "telNumber": "13231321312",
+      "city": "Berlin",
+      "pricePerNight": "",
+      "id": 4
+    },
+    {
+      "agencyName": "reebook",
+      "telNumber": "13231321312",
+      "city": "samarkand",
+      "id": 5
+    },
+    {
+      "agencyName": "reebook",
+      "telNumber": "13231321312",
+      "city": "samarkand",
+      "id": 6
+    }
+  ],
+  "branches": [
+    {
+      "agencyName": "",
+      "telNumber": "13231321312",
+      "city": "London",
+      "branchName": "westminster",
+      "id": 1
+    },
+    {
+      "agencyName": "",
+      "telNumber": "13231321312",
+      "city": "London",
+      "branchName": "westminster",
+      "id": 1
+    },
+    {
+      "agencyName": "",
+      "telNumber": "13231321312",
+      "city": "London",
+      "branchName": "westminster",
+      "id": 1
+    },
+    {
+      "agencyName": "",
+      "telNumber": "13231321312",
+      "city": "London",
+      "branchName": "westminster",
+      "id": 1
+    },
+    {
+      "agencyName": "",
+      "telNumber": "13231321312",
+      "city": "London",
+      "branchName": "westminster",
+      "id": 1
+    },
+    {
+      "agencyName": "",
+      "telNumber": "13231321312",
+      "city": "London",
+      "branchName": "westminster",
+      "id": 1
+    },
+    {
+      "agencyName": "",
+      "telNumber": "13231321312",
+      "city": "London",
+      "branchName": "westminster",
+      "id": 1
+    }
+  ]
 }

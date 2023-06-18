@@ -73,10 +73,12 @@ const Header: React.FC<HeaderProps> = () => {
     const headBtn = () => {
         if (id === 'agency') {
             return (
-                <div className="flex items-center">
-                    <img src="/img/plus-circle.svg" className="w-[20px]" alt="" />
-                    <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">Создать агентства</p>
-                </div >
+                <Link to={'/addagency'}>
+                    <div className="flex items-center">
+                        <img src="/img/plus-circle.svg" className="w-[20px]" alt="" />
+                        <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">Создать агентства</p>
+                    </div >
+                </Link>
             )
         } else if (id === 'hotel') {
             return (
@@ -89,10 +91,12 @@ const Header: React.FC<HeaderProps> = () => {
             )
         } else if (id === 'branches') {
             return (
-                <div className="flex items-center">
-                    <img src="/img/plus-circle.svg" className="w-[20px]" alt="" />
-                    <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">Создать филиалы</p>
-                </div >
+                <Link to={'/addbranches'}>
+                    <div className="flex items-center">
+                        <img src="/img/plus-circle.svg" className="w-[20px]" alt="" />
+                        <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">Создать филиалы</p>
+                    </div >
+                </Link>
             )
         } else if (id === '') {
             return (

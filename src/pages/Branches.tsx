@@ -1,4 +1,5 @@
 import React from 'react';
+import BranchTable from '../components/BranchTable';
 
 interface BranchesProps {
 
@@ -36,6 +37,8 @@ const Branches: React.FC<BranchesProps> = () => {
                 </div>
 
             </div>
+
+            <BranchTable />
 
         </div>
     );

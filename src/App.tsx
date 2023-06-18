@@ -9,6 +9,8 @@ import Agency from "./pages/Agency";
 import Branches from "./pages/Branches";
 import AddClient from "./pages/AddClient";
 import AddHotel from "./pages/AddHotel";
+import AddAgency from "./pages/AddAgency";
+import AddBranch from "./pages/AddBranch";
 
 function App() {
 
@@ -25,6 +27,8 @@ function App() {
           <Route index path="/branches" element={<Branches />} />
           <Route index path="/addclient" element={<AddClient />} />
           <Route index path="/addhotel" element={<AddHotel />} />
+          <Route index path="/addagency" element={<AddAgency />} />
+          <Route index path="/addbranche" element={<AddBranch />} />
         </Route>
 
       </Routes>

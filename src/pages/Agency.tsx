@@ -1,4 +1,5 @@
 import React from 'react';
+import AgencyTable from '../components/AgencyTable';
 
 interface AgencyProps {
 
@@ -36,6 +37,8 @@ const Agency: React.FC<AgencyProps> = () => {
                 </div>
 
             </div>
+
+            <AgencyTable/>
 
         </div>
     );
