@@ -28,7 +28,7 @@ function App() {
           <Route index path="/addclient" element={<AddClient />} />
           <Route index path="/addhotel" element={<AddHotel />} />
           <Route index path="/addagency" element={<AddAgency />} />
-          <Route index path="/addbranche" element={<AddBranch />} />
+          <Route index path="/addbranches" element={<AddBranch />} />
         </Route>
 
       </Routes>
