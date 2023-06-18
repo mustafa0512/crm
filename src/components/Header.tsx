@@ -96,10 +96,12 @@ const Header: React.FC<HeaderProps> = () => {
             )
         } else if (id === '') {
             return (
-                <div className="flex items-center">
-                    <img src="/img/plus-circle.svg" className="w-[20px]" alt="" />
-                    <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">Создать клиента</p>
-                </div >
+                <Link to={'/addclient'}>
+                    <div className="flex items-center">
+                        <img src="/img/plus-circle.svg" className="w-[20px]" alt="" />
+                        <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">Создать клиента</p>
+                    </div >
+                </Link>
             )
         }
     }
@@ -136,7 +138,7 @@ const Header: React.FC<HeaderProps> = () => {
                             <div className={`${open ? "ml-[20%]" : 'justify-between'} w-[80%] flex justify-between items-center`}>
 
                                 {
-                                    headBtn()   
+                                    headBtn()
                                 }
 
                                 <div className="flex items-center">
