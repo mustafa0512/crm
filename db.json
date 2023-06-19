@@ -312,114 +312,209 @@
   ],
   "hotels": [
     {
-      "hotelName": "Registan",
+      "hotelName": "The Ankara Hotel",
       "telNumber": "908765544",
-      "city": "samarkand",
-      "pricePerNight": "220000",
+      "city": "Ankara",
+      "pricePerNight": "1030000",
       "id": 1
     },
     {
-      "hotelName": "Registan",
-      "telNumber": "908765544",
-      "city": "samarkand",
-      "pricePerNight": "220000",
+      "hotelName": "Riu Plaza New York Times Square",
+      "telNumber": "998965089",
+      "city": "NewYork",
+      "pricePerNight": "1200000",
       "id": 2
+    },
+    {
+      "hotelName": "Hotel Verdandi Oslo",
+      "telNumber": "9989304089",
+      "city": "Oslo",
+      "pricePerNight": "320000",
+      "id": 3
+    },
+    {
+      "hotelName": "Exclusive Gramado by Gramado Parks",
+      "telNumber": "998900089",
+      "city": "Gramado",
+      "pricePerNight": "620000",
+      "id": 4
+    },
+    {
+      "hotelName": "Henna Hotel Istanbul ",
+      "telNumber": "9948600089",
+      "city": "Istanbul",
+      "pricePerNight": "820000",
+      "id": 5
+    },
+    {
+      "hotelName": "MARINA BAY SANDS",
+      "telNumber": "994861432",
+      "city": "Singapore",
+      "pricePerNight": "820000",
+      "id": 6
+    },
+    {
+      "hotelName": "YOU AND ME BY COCOON MALDIVES",
+      "telNumber": "998979033454",
+      "city": "MALDIVES",
+      "pricePerNight": "2820000",
+      "id": 7
+    },
+    {
+      "hotelName": "CAVAS WINE LODGE",
+      "telNumber": "9948600099",
+      "city": "Argentina",
+      "pricePerNight": "1220000",
+      "id": 8
+    },
+    {
+      "hotelName": "GOLDEN TEMPLE HOTE",
+      "telNumber": "88904556600",
+      "city": "Cambodia",
+      "pricePerNight": "4520000",
+      "id": 9
+    },
+    {
+      "hotelName": "EMERALD MALDIVES RESORT & SPA",
+      "telNumber": "9948600089",
+      "city": "MALDIVES",
+      "pricePerNight": "9820000",
+      "id": 10
+    },
+    {
+      "hotelName": "Mardan Palace",
+      "telNumber": "994823453",
+      "city": "Antalya",
+      "pricePerNight": "10820000",
+      "id": 11
+    },
+    {
+      "hotelName": "Burj Al Arab ",
+      "telNumber": "88005446660",
+      "city": "Dubai",
+      "pricePerNight": "3820000",
+      "id": 12
+    },
+    {
+      "hotelName": " Monastero Santa Rosa Hotel & Spa",
+      "telNumber": "986046669",
+      "city": "Italy",
+      "pricePerNight": "2820000",
+      "id": 13
+    },
+    {
+      "hotelName": "The Ritz-Carlton",
+      "telNumber": "9860460089",
+      "city": "Bali",
+      "pricePerNight": "16820000",
+      "id": 14
     }
   ],
   "agency": [
     {
-      "agencyName": "Registan",
-      "telNumber": "13231321312",
-      "city": "Berlin",
+      "agencyName": "Creative Tours",
+      "telNumber": "908765544",
+      "city": "Ankara",
       "id": 1
     },
     {
-      "agencyName": "Registan",
-      "telNumber": "13231321312",
-      "city": "Berlin",
+      "agencyName": "Silk Tour",
+      "telNumber": "998965089",
+      "city": "NewYork",
       "id": 2
     },
     {
-      "agencyName": "Registan",
-      "telNumber": "13231321312",
-      "city": "Berlin",
+      "agencyName": "Afrosiab travel",
+      "telNumber": "9989304089",
+      "city": "Oslo",
       "id": 3
     },
     {
-      "agencyName": "Registan",
-      "telNumber": "13231321312",
-      "city": "Berlin",
+      "agencyName": "Uktamxon tour",
+      "telNumber": "998900089",
+      "city": "Gramado",
       "pricePerNight": "",
       "id": 4
     },
     {
-      "agencyName": "reebook",
-      "telNumber": "13231321312",
-      "city": "samarkand",
+      "agencyName": "Easybooking",
+      "telNumber": "9948600089",
+      "city": "Istanbul",
       "id": 5
     },
     {
-      "agencyName": "reebook",
-      "telNumber": "13231321312",
-      "city": "samarkand",
+      "agencyName": "Atlas Avia Tour",
+      "telNumber": "994861432",
+      "city": "Singapore",
       "id": 6
     },
     {
-      "agencyName": "reebook",
-      "telNumber": "13231321312",
-      "city": "London",
+      "agencyName": "Silk Road Destinations",
+      "telNumber": "998979033454",
+      "city": "MALDIVES",
       "id": 7
     }
   ],
   "branches": [
     {
-      "agencyName": "",
-      "telNumber": "13231321312",
-      "city": "London",
-      "branchName": "westminster",
+      "telNumber": "908765544",
+      "city": "Ankara",
+      "branchName": "WonjinPS",
       "id": 1
     },
     {
-      "agencyName": "",
-      "telNumber": "13231321312",
-      "city": "London",
-      "branchName": "westminster",
+      "telNumber": "998965089",
+      "city": "NewYork",
+      "branchName": "St. Mary’s Hos...",
       "id": 2
     },
     {
-      "agencyName": "",
-      "telNumber": "13231321312",
-      "city": "London",
-      "branchName": "westminster",
+      "telNumber": "9989304089",
+      "city": "Oslo",
+      "branchName": "Lifedental",
       "id": 3
     },
     {
-      "agencyName": "",
-      "telNumber": "13231321312",
-      "city": "London",
-      "branchName": "westminster",
+      "telNumber": "998900089",
+      "city": "Gramado",
+      "branchName": "St. Mary’s Hos...",
       "id": 4
     },
     {
-      "agencyName": "",
-      "telNumber": "13231321312",
-      "city": "London",
-      "branchName": "westminster",
+      "telNumber": "9948600089",
+      "city": "Istanbul",
+      "branchName": "Lifedental",
       "id": 5
     },
     {
-      "agencyName": "",
-      "telNumber": "13231321312",
-      "city": "London",
-      "branchName": "westminster",
+      "telNumber": "994861432",
+      "city": "Singapore",
+      "branchName": "Chung-Ang",
       "id": 6
     },
     {
-      "agencyName": "",
-      "telNumber": "13231321312",
-      "city": "London",
-      "branchName": "westminster",
+      "telNumber": "998979033454",
+      "city": "Argentina",
+      "branchName": "WonjinPS",
       "id": 7
+    },
+    {
+      "telNumber": "9948600099",
+      "city": "Cambodia",
+      "branchName": "Chung-Ang",
+      "id": 8
+    },
+    {
+      "telNumber": "88904556600",
+      "city": "Antalya",
+      "branchName": "St. Mary’s Hos...",
+      "id": 9
+    },
+    {
+      "telNumber": "9948600089",
+      "city": "Dubai",
+      "branchName": "WonjinPS",
+      "id": 10
     }
   ]
 }

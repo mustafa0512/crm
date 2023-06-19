@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Link } from "react-router-dom";
@@ -18,8 +18,18 @@ type Inputs = {
     exampleRequired: string;
 };
 
+type typeHotel = {
+    id: number
+    city: string;
+    hotelName: string;
+    telNumber: number;
+    pricePerNight: string
+    exampleRequired: string;
+};
+
 
 const AddClient: React.FC<AddClientProps> = () => {
+    const [hotel, setHotel] = useState<Array<typeHotel>>([]);
     const [branches, setBranches] = useState<string | undefined>();
     const [statuses, setStatuses] = useState<string | undefined>();
     const [hotels, setHotels] = useState<string | undefined>();
@@ -45,6 +55,18 @@ const AddClient: React.FC<AddClientProps> = () => {
         axios.post(BASE_URL + "/customers", data)
             .then((res) => console.log(res.data));
     };
+
+    useEffect(() => {
+
+        const getHotels = async () => {
+            const res = await axios.get(BASE_URL + "/hotels")
+            setHotel(res.data);
+        }
+
+        getHotels()
+
+    }, []);
+
 
     return (
         <div>
@@ -177,12 +199,9 @@ const AddClient: React.FC<AddClientProps> = () => {
                                         className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333] mb-[20px]"
                                         onClick={(e: any) => setHotels(e.target.value)}
                                     >
-                                        <option value="The Ankara Hotel">The Ankara Hotel</option>
-                                        <option value="Riu Plaza New York Times Square">Riu Plaza New York Times Square</option>
-                                        <option value="Berlin Marriott Hotel">Berlin Marriott Hotel</option>
-                                        <option value="Hotel Verdandi Oslo">Hotel Verdandi Oslo</option>
-                                        <option value="Exclusive Gramado by Gramado Parks">Exclusive Gramado by Gramado Parks</option>
-                                        <option value="Henna Hotel Istanbul ">Henna Hotel Istanbul </option>
+                                        {
+                                            hotel.map(item => <option key={item.id} value="The Ankara Hotel">{item.hotelName}</option>)
+                                        }
                                     </select>
                                 </label>
                             </div>
