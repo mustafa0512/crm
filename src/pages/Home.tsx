@@ -15,27 +15,7 @@ interface HomeProps {
     setCurrentPage: number
 }
 
-interface PaginationProps {
-
-}
-
-// type typeUser = {
-//     id: number
-//     client: string;
-//     date: string;
-//     email: string;
-//     city: string;
-//     status: string;
-//     telNumber: number;
-//     branch: string;
-//     secTelNumber: number;
-//     hotel: string
-//     from_city: string
-//     to_city: string
-//     cost: number
-//     takeOff: string
-//     arrive: string
-// }
+interface PaginationProps {}
 
 
 type typeClient = {

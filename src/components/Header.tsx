@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -12,8 +12,31 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Checkbox from '@mui/material/Checkbox';
 import { Link } from "react-router-dom";
 import { FormControlLabel, FormGroup } from "@mui/material";
+import axios from "axios";
+let BASE_URL: string = "http://localhost:3103";
+
 
 interface HeaderProps { }
+
+
+type typeClient = {
+    id: number
+    client: string;
+    date: string;
+    email: string;
+    city: string;
+    status: string;
+    telNumber: number;
+    branch: string;
+    secTelNumber: number;
+    hotel: string
+    from_city: string
+    to_city: string
+    cost: number
+    takeOff: string
+    arrive: string
+    exampleRequired: string;
+};
 
 const drawerWidth = 330;
 
@@ -67,6 +90,28 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 const Header: React.FC<HeaderProps> = () => {
+    const [search, setSearhc] = useState<string>('')
+    const [person, setPerson] = useState<Array<typeClient>>([]);
+
+    useEffect(() => {
+
+        const getUsers = async () => {
+            const res = await axios.get(BASE_URL + "/customers")
+            setPerson(res.data);
+        }
+
+        getUsers()
+
+    }, []);
+
+
+    const searching = () => {
+        const val = person.filter(item => item.client.toLowerCase().includes(search.toLowerCase()))
+        console.log(val);
+
+    }
+
+    // searching()
 
     const id = window.location.href.split('/').at(-1)
 
@@ -152,7 +197,7 @@ const Header: React.FC<HeaderProps> = () => {
 
                                 <form className="w-[300px] border-[1px] border-[#B5B5B5FF] rounded-[8px] flex items-center px-4 py-3" action="">
                                     <img src="/img/search.svg" className="w-[20px]" alt="" />
-                                    <input type="text" className="text-[#B5B5B5FF] ml-[15px] text-[14px] outline-none" placeholder="Поиск..." />
+                                    <input type="text" className="text-[#B5B5B5FF] ml-[15px] text-[14px] outline-none" onKeyUp={(e: any) => setSearhc(e.target.value)} placeholder="Поиск..." />
                                 </form>
                                 <div className="flex items-center">
                                     <img className="w-[25px]" src="/img/bell.svg" alt="" />
