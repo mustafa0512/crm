@@ -55,7 +55,7 @@ const Hotel: React.FC<HotelProps> = () => {
     }, []);
 
     const navigate = useNavigate();
-    const getLocalUser = localStorage.getItem("user")
+    const getLocalUser: any = localStorage.getItem("user")
 
     JSON.parse(getLocalUser)
 

@@ -36,6 +36,7 @@ const SignIn: React.FC<SignInProps> = () => {
             if (item.email === data.email && item.password === data.password) {
                 navigate('/')
                 localStorage.setItem("user", JSON.stringify(data))
+                localStorage.setItem("fullUser", JSON.stringify(item))
             } else if (item.email !== data.email || item.password !== data.password) {
                 console.log('Проверьте правельно ли заполнили все')
             }

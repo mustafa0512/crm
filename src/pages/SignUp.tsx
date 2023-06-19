@@ -39,6 +39,8 @@ const SignIn: React.FC<SignInProps> = () => {
             } else {
                 axios.post(BASE_URL + '/users', data)
                     .then(res => console.log(res.data))
+
+                localStorage.setItem("fullUser", JSON.stringify(data))
             }
 
         })

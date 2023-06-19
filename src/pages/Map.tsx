@@ -1,16 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface MapProps {
-
+    // name: string;
+    // email: string;
 }
 
 const Map: React.FC<MapProps> = () => {
+    const navigate = useNavigate();
+    const getLocalUser: any = localStorage.getItem("fullUser")
+
+    const local_user = JSON.parse(getLocalUser)
+
+    useEffect(() => {
+        if (getLocalUser?.length === 0 || getLocalUser === null) {
+            navigate('/signin')
+        }
+    }, [])
+    
+
     return (
         <div>
 
             <iframe className='h-[85%] w-[100%] absolute z-[-1]' src='//www.zeemaps.com/pub?group=4727803&x=9.921997&y=54.693764&z=16'></iframe>
 
-            <div className='px-20 py-14 h-[600px] w-[760px] overflow-y-scroll ml-[800px] ' >
+            <div className='forNoScroll px-20 py-14 h-[600px] w-[760px] overflow-y-scroll fixed top-[100px] right-[-30px]' >
 
                 <div className='w-[570px] h-[300px] bg-[#fff] mt-[30px] rounded-[12px] px-6 py-7 flex flex-col justify-between'>
 
@@ -18,8 +32,8 @@ const Map: React.FC<MapProps> = () => {
                         <div className='w-[50px] h-[50px] rounded-[50%] bg-[#C4CDD5] mr-[20px] '></div>
                         <div>
                             {/* <input type="file" /> */}
-                            <p className='text-[20px] text-[#333333] font-semibold'>Name Surname</p>
-                            <span className='text-[#637381] text-[16x]'>Email</span>
+                            <p className='text-[20px] text-[#333333] font-semibold'>{local_user?.name}</p>
+                            <span className='text-[#637381] text-[16x]'>{local_user?.email}</span>
                         </div>
                     </div>
 
@@ -41,8 +55,8 @@ const Map: React.FC<MapProps> = () => {
                         <div className='w-[50px] h-[50px] rounded-[50%] bg-[#C4CDD5] mr-[20px] '></div>
                         <div>
                             {/* <input type="file" /> */}
-                            <p className='text-[20px] text-[#333333] font-semibold'>Name Surname</p>
-                            <span className='text-[#637381] text-[16x]'>Email</span>
+                            <p className='text-[20px] text-[#333333] font-semibold'>{local_user?.name}</p>
+                            <span className='text-[#637381] text-[16x]'>{local_user?.email}</span>
                         </div>
                     </div>
 
@@ -57,6 +71,7 @@ const Map: React.FC<MapProps> = () => {
                     </div>
 
                 </div>
+
 
             </div>
         </div>

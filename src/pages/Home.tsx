@@ -74,7 +74,7 @@ const Home: React.FC<HomeProps> = () => {
     }, []);
 
     const navigate = useNavigate();
-    const getLocalUser = localStorage.getItem("user")
+    const getLocalUser: any = localStorage.getItem("user")
 
     JSON.parse(getLocalUser)
 

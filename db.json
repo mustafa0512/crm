@@ -5,6 +5,12 @@
       "email": "example@gmail.com",
       "password": "1234",
       "id": 1
+    },
+    {
+      "name": "Alex",
+      "email": "example.form@gmail.com",
+      "password": "1111",
+      "id": 2
     }
   ],
   "customers": [
