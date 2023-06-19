@@ -21,7 +21,7 @@ type typeUser = {
 };
 
 const SignIn: React.FC<SignInProps> = () => {
-    
+
     const [user, setUser] = useState<Array<typeUser>>([]);
     const navigate = useNavigate();
 
@@ -35,6 +35,7 @@ const SignIn: React.FC<SignInProps> = () => {
         user.filter(item => {
             if (item.email === data.email && item.password === data.password) {
                 navigate('/')
+                localStorage.setItem("user", JSON.stringify(data))
             } else if (item.email !== data.email || item.password !== data.password) {
                 console.log('Проверьте правельно ли заполнили все')
             }

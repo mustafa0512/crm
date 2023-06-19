@@ -11,6 +11,7 @@ import AddClient from "./pages/AddClient";
 import AddHotel from "./pages/AddHotel";
 import AddAgency from "./pages/AddAgency";
 import AddBranch from "./pages/AddBranch";
+import Map from "./pages/Map";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <Route index path="/addhotel" element={<AddHotel />} />
           <Route index path="/addagency" element={<AddAgency />} />
           <Route index path="/addbranches" element={<AddBranch />} />
+          <Route index path="/map" element={<Map />} />
         </Route>
 
       </Routes>

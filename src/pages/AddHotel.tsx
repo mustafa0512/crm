@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 let BASE_URL: string = "http://localhost:3103";
 
 interface AddClientProps { }
@@ -27,6 +27,15 @@ const AddClient: React.FC<AddClientProps> = () => {
         axios.post(BASE_URL + "/hotels", data)
             .then((res) => console.log(res.data));
     };
+
+    const navigate = useNavigate();
+    const getLocalUser = localStorage.getItem("user")
+
+    JSON.parse(getLocalUser)
+
+    if (getLocalUser?.length === 0 || getLocalUser === null) {
+        navigate('/signin')
+    }
 
     return (
         <div>

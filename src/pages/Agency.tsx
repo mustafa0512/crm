@@ -7,6 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 let BASE_URL: string = "http://localhost:3103";
 
 interface AgencyProps { }
@@ -53,6 +54,15 @@ const Agency: React.FC<AgencyProps> = () => {
 
     }, []);
 
+    const navigate = useNavigate();
+    const getLocalUser = localStorage.getItem("user")
+
+    JSON.parse(getLocalUser)
+
+    if (getLocalUser?.length === 0 || getLocalUser === null) {
+        navigate('/signin')
+    }
+
     return (
         <div>
             <div className='flex items-center justify-between max-w-[1470px] m-auto px-6'>
@@ -72,7 +82,7 @@ const Agency: React.FC<AgencyProps> = () => {
                 </div>
 
                 <div className='flex items-center '>
-                <p className='text-[#828282] text-[14px]'>{lastUserIndex} из {totalAgency}</p>
+                    <p className='text-[#828282] text-[14px]'>{lastUserIndex} из {totalAgency}</p>
 
                     <div className='flex items-center justify-between w-[230px] h-[50px] text-[18px] text-[#414141] ml-[30px] rounded-[8px] border-[1px] border-[#DEE2E6] px-1 cursor-pointer'>
                         <button onClick={prevPage} className='h-[50px] border-r-[1px] border-[#DEE2E6] px-2'>Prev</button>

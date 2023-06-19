@@ -7,6 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { useNavigate } from 'react-router-dom';
 let BASE_URL: string = "http://localhost:3103";
 
 
@@ -15,7 +16,7 @@ interface HomeProps {
     setCurrentPage: number
 }
 
-interface PaginationProps {}
+interface PaginationProps { }
 
 
 type typeClient = {
@@ -71,6 +72,16 @@ const Home: React.FC<HomeProps> = () => {
         getUsers()
 
     }, []);
+
+    const navigate = useNavigate();
+    const getLocalUser = localStorage.getItem("user")
+
+    JSON.parse(getLocalUser)
+
+    if (getLocalUser?.length === 0 || getLocalUser === null) {
+        navigate('/signin')
+    }
+
 
 
     return (

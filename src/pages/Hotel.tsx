@@ -7,6 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 let BASE_URL: string = "http://localhost:3103";
 
 interface HotelProps { }
@@ -52,6 +53,15 @@ const Hotel: React.FC<HotelProps> = () => {
         getUsers()
 
     }, []);
+
+    const navigate = useNavigate();
+    const getLocalUser = localStorage.getItem("user")
+
+    JSON.parse(getLocalUser)
+
+    if (getLocalUser?.length === 0 || getLocalUser === null) {
+        navigate('/signin')
+    }
 
     return (
         <div>
