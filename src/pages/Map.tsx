@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+let BASE_URL: string = "http://localhost:3103";
 
-interface MapProps {
-    // name: string;
-    // email: string;
-}
+interface MapProps { }
 
 const Map: React.FC<MapProps> = () => {
+    const [comment, setComment] = useState<Array<string>>([]);
     const navigate = useNavigate();
     const getLocalUser: any = localStorage.getItem("fullUser")
 
@@ -17,7 +17,15 @@ const Map: React.FC<MapProps> = () => {
             navigate('/signin')
         }
     }, [])
-    
+
+    useEffect(() => {
+        const getUsers = async () => {
+            const res = await axios.get(BASE_URL + "/blog")
+            setComment(res.data);
+        }
+
+        getUsers()
+    }, [])
 
     return (
         <div>
@@ -26,51 +34,32 @@ const Map: React.FC<MapProps> = () => {
 
             <div className='forNoScroll px-20 py-14 h-[600px] w-[760px] overflow-y-scroll fixed top-[100px] right-[-30px]' >
 
-                <div className='w-[570px] h-[300px] bg-[#fff] mt-[30px] rounded-[12px] px-6 py-7 flex flex-col justify-between'>
+                {
+                    comment.map((item, inx) => (
+                        <div key={inx} className='w-[570px] min-h-[200px] bg-[#fff] mt-[30px] rounded-[12px] px-6 py-7 flex flex-col justify-between'>
 
-                    <div className='flex items-center'>
-                        <div className='w-[50px] h-[50px] rounded-[50%] bg-[#C4CDD5] mr-[20px] '></div>
-                        <div>
-                            {/* <input type="file" /> */}
-                            <p className='text-[20px] text-[#333333] font-semibold'>{local_user?.name}</p>
-                            <span className='text-[#637381] text-[16x]'>{local_user?.email}</span>
+                            <div className='flex items-center mb-[30px]'>
+                                <div className='w-[50px] h-[50px] rounded-[50%] bg-[#C4CDD5] mr-[20px] '></div>
+                                <div>
+                                    {/* <input type="file" /> */}
+                                    <p className='text-[20px] text-[#333333] font-semibold'>{local_user?.name}</p>
+                                    <span className='text-[#637381] text-[16x]'>{local_user?.email}</span>
+                                </div>
+                            </div>
+
+                            <p className='w-[90%] text-[#637381] text-[14px]'>
+                                {item.comment}
+                            </p>
+
+                            <div className='mt-[30px]'>
+                                <button className='bg-[#333333] text-[#fff] w-[200px] py-2 '>Удалить</button>
+                                <button className='ms-3 border-[#333333] border-[1px]  text-[#333333] w-[200px] py-2'>Именить</button>
+                            </div>
+
                         </div>
-                    </div>
+                    ))
+                }
 
-                    <p className='w-[80%] text-[#637381] text-[14px]'>
-                        Закрытое или открытое торговое пространство, включающее множество торговых точек (магазинов и т.д.)
-                        Бизнес-центр (лифты, стойка администрации, холл, прилифтовая зона)
-                    </p>
-
-                    <div>
-                        <button className='bg-[#333333] text-[#fff] w-[200px] py-2 '>Удалить</button>
-                        <button className='ms-3 border-[#333333] border-[1px]  text-[#333333] w-[200px] py-2'>Именить</button>
-                    </div>
-
-                </div>
-
-                <div className='w-[570px] h-[300px] bg-[#fff] mt-[30px] rounded-[12px] px-6 py-7 flex flex-col justify-between'>
-
-                    <div className='flex items-center'>
-                        <div className='w-[50px] h-[50px] rounded-[50%] bg-[#C4CDD5] mr-[20px] '></div>
-                        <div>
-                            {/* <input type="file" /> */}
-                            <p className='text-[20px] text-[#333333] font-semibold'>{local_user?.name}</p>
-                            <span className='text-[#637381] text-[16x]'>{local_user?.email}</span>
-                        </div>
-                    </div>
-
-                    <p className='w-[80%] text-[#637381] text-[14px]'>
-                        Закрытое или открытое торговое пространство, включающее множество торговых точек (магазинов и т.д.)
-                        Бизнес-центр (лифты, стойка администрации, холл, прилифтовая зона)
-                    </p>
-
-                    <div>
-                        <button className='bg-[#333333] text-[#fff] w-[200px] py-2 '>Удалить</button>
-                        <button className='ms-3 border-[#333333] border-[1px]  text-[#333333] w-[200px] py-2'>Именить</button>
-                    </div>
-
-                </div>
 
 
             </div>

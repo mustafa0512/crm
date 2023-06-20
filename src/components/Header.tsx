@@ -165,7 +165,7 @@ const Header: React.FC<HeaderProps> = () => {
             return (
                 <div className="flex items-center">
                     <img src="/img/settings.svg" className="w-[20px]" alt="" />
-                    <Link to={'/'}>
+                    <Link to={'/blog'}>
                         <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">
                             Создать блог
                         </p>

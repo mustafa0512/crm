@@ -12,6 +12,7 @@ import AddHotel from "./pages/AddHotel";
 import AddAgency from "./pages/AddAgency";
 import AddBranch from "./pages/AddBranch";
 import Map from "./pages/Map";
+import BLog from "./pages/BLog";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
           <Route index path="/addagency" element={<AddAgency />} />
           <Route index path="/addbranches" element={<AddBranch />} />
           <Route index path="/map" element={<Map />} />
+          <Route index path="/blog" element={<BLog />} />
         </Route>
 
       </Routes>
