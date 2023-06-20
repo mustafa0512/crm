@@ -220,11 +220,13 @@ const Header: React.FC<HeaderProps> = () => {
                             <MenuIcon />
                         </IconButton>
                         <div className="max-w-[1440px] w-full h-[80px] m-auto flex justify-between items-center">
-                            <img
-                                src="/img/logo.svg"
-                                className={`${open ? "hidden" : "block"} w-[120px]`}
-                                alt=""
-                            />
+                            <Link to={'/'}>
+                                <img
+                                    src="/img/logo.svg"
+                                    className={`${open ? "hidden" : "block"} w-[120px]`}
+                                    alt=""
+                                />
+                            </Link>
 
                             <div
                                 className={`${open ? "ml-[20%]" : "justify-between"
@@ -309,7 +311,7 @@ const Header: React.FC<HeaderProps> = () => {
                     </DrawerHeader>
                     <List sx={{ background: "#2E2E2EFF" }}>
                         <div className="px-4 py-3">
-                            <Link to={"/signup"}>
+                            <Link to={"/"}>
                                 <div className="flex items-end ">
                                     <img src="/img/home.svg" alt="" />
                                     <p className="text-[18px] text-[#fff] font-semibold ml-[10px]">

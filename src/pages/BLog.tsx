@@ -78,7 +78,7 @@ const BLog: React.FC<BLogProps> = () => {
                         <div className='mt-[30px]'>
                             <button className='border-[#333333] border-[1px]  text-[#333333] w-[200px] py-2'>Сохранить</button>
                             <Link to={'/map'}>
-                                <button className='bg-[#333333] text-[#fff] w-[200px] py-2 ms-3'>Выйти</button>
+                                <button type='button' className='bg-[#333333] text-[#fff] w-[200px] py-2 ms-3'>Выйти</button>
                             </Link>
                         </div>
                     </form>

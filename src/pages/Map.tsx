@@ -1,14 +1,22 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import MapModal from '../components/MapModal';
 let BASE_URL: string = "http://localhost:3103";
 
 interface MapProps { }
+
+interface delComProps {
+    id: number
+}
+
+
 
 const Map: React.FC<MapProps> = () => {
     const [comment, setComment] = useState<Array<string>>([]);
     const navigate = useNavigate();
     const getLocalUser: any = localStorage.getItem("fullUser")
+    const [comID, setComID] = useState<string>()
 
     const local_user = JSON.parse(getLocalUser)
 
@@ -26,6 +34,28 @@ const Map: React.FC<MapProps> = () => {
 
         getUsers()
     }, [])
+
+    const delComment: React.FC<delComProps> = (id) => {
+
+        axios.delete(BASE_URL + `/blog/${id}`)
+            .then(res => console.log(res.data))
+
+        location.reload()
+
+    }
+
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = (id) => {
+        setOpen(true)
+        setComID(id)
+
+    };
+    const handleClose = () => {
+        setOpen(false);
+        location.reload()
+    }
+
+    const commentID: number = 0
 
     return (
         <div>
@@ -52,17 +82,17 @@ const Map: React.FC<MapProps> = () => {
                             </p>
 
                             <div className='mt-[30px]'>
-                                <button className='bg-[#333333] text-[#fff] w-[200px] py-2 '>Удалить</button>
-                                <button className='ms-3 border-[#333333] border-[1px]  text-[#333333] w-[200px] py-2'>Именить</button>
+                                <button onClick={() => delComment(item.id)} className='bg-[#333333] text-[#fff] w-[200px] py-2 '>Удалить</button>
+                                <button onClick={() => handleOpen(item.id)} className='ms-3 border-[#333333] border-[1px]  text-[#333333] w-[200px] py-2'>Именить</button>
                             </div>
 
                         </div>
                     ))
                 }
 
-
-
             </div>
+
+            <MapModal comID={comID} open={open} handleClose={handleClose} />
         </div>
     );
 };
