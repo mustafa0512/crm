@@ -7,7 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 let BASE_URL: string = "http://localhost:3103";
 
 
@@ -96,7 +96,9 @@ const Home: React.FC<HomeProps> = () => {
                         <h1 className='text-[36px] text-[#000] font-semibold'>Клиенты</h1>
 
                         <div className='w-[70px] flex justify-between'>
-                            <img src="/img/buttonRow.svg" className='w-[22px]' alt="" />
+                            <Link to={'/column'}>
+                                <img src="/img/buttonRow.svg" className='w-[22px]' alt="" />
+                            </Link>
                             <img src="/img/buttonLine.svg" className='w-[22px]' alt="" />
                         </div>
                     </div>

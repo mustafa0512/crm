@@ -13,6 +13,7 @@ import AddAgency from "./pages/AddAgency";
 import AddBranch from "./pages/AddBranch";
 import Map from "./pages/Map";
 import BLog from "./pages/BLog";
+import ColumnHome from "./pages/ColumnHome";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
           <Route index path="/addbranches" element={<AddBranch />} />
           <Route index path="/map" element={<Map />} />
           <Route index path="/blog" element={<BLog />} />
+          <Route index path="/column" element={<ColumnHome />} />
         </Route>
 
       </Routes>
