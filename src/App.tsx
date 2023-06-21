@@ -14,6 +14,7 @@ import AddBranch from "./pages/AddBranch";
 import Map from "./pages/Map";
 import BLog from "./pages/BLog";
 import ColumnHome from "./pages/ColumnHome";
+import EditClient from "./pages/EditClient";
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
           <Route index path="/map" element={<Map />} />
           <Route index path="/blog" element={<BLog />} />
           <Route index path="/column" element={<ColumnHome />} />
+          <Route index path="/editclient/:id" element={<EditClient />} />
         </Route>
 
       </Routes>

@@ -1,5 +1,4 @@
 import React from 'react';
-
 interface UserCartProps {
     item: any
 }
@@ -8,8 +7,24 @@ interface UserCartProps {
 
 const UserCart: React.FC<UserCartProps> = ({ item }) => {
 
+    function dragStartHandler(e: any, item: any) {
+        console.log('drag', item);
+    }
+
+    function dragOverHandler(e: any) {
+        e.preventDefault()
+    }
+
+    function dropHandler(e: any, item: any) {
+        e.preventDefault()
+        console.log('drop', item);
+    }
+
     return (
         <div
+            onDragStart={(e) => dragStartHandler(e, item)}
+            onDragOver={(e) => dragOverHandler(e)}
+            onDrop={(e) => dropHandler(e, item)}
             draggable={true}
             className='px-2 py-4 w-[200px] bg-[#F1F2F4] rounded-[14px] mt-[20px] cursor-pointer'>
 

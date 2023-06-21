@@ -29,8 +29,6 @@ type typeClient = {
 const Categories: React.FC<CategoriesProps> = ({ item }) => {
     const [person, setPerson] = useState<Array<typeClient>>([]);
     const fildCat = person.filter(el => el?.status == item?.name)
-    const [cartList, setCartList] = useState<Array<typeClient>>();
-
 
     useEffect(() => {
 
@@ -42,6 +40,7 @@ const Categories: React.FC<CategoriesProps> = ({ item }) => {
         getUsers()
 
     }, []);
+    
     return (
         <div className='w-[240px] bg-[#fff] rounded-[12px] px-4 py-4'>
 
