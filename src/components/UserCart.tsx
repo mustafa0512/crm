@@ -7,7 +7,7 @@ interface UserCartProps {
 
 const UserCart: React.FC<UserCartProps> = ({ item }) => {
 
-    function dragStartHandler(e: any, item: any) {
+    function dragStartHandler(item: any) {
         console.log('drag', item);
     }
 
@@ -22,7 +22,7 @@ const UserCart: React.FC<UserCartProps> = ({ item }) => {
 
     return (
         <div
-            onDragStart={(e) => dragStartHandler(e, item)}
+            onDragStart={(e) => dragStartHandler(item)}
             onDragOver={(e) => dragOverHandler(e)}
             onDrop={(e) => dropHandler(e, item)}
             draggable={true}
