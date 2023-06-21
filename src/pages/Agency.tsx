@@ -73,10 +73,6 @@ const Agency: React.FC<AgencyProps> = () => {
 
                         <h1 className='text-[36px] text-[#000] font-semibold'>Тур Агентства</h1>
 
-                        <div className='w-[70px] flex justify-between'>
-                            <img src="/img/buttonRow.svg" className='w-[22px]' alt="" />
-                            <img src="/img/buttonLine.svg" className='w-[22px]' alt="" />
-                        </div>
                     </div>
 
                 </div>
