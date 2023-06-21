@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import UserCart from '../components/UserCart';
-
+import Categories from '../components/Categories';
 interface ColumnHomeProps {
 
 }
@@ -17,7 +16,7 @@ let colArr: any = [
         id: 2
     },
     {
-        name: 'Оплачен полностью ',
+        name: 'Оплачен полностью',
         id: 3
     },
     {
@@ -53,30 +52,16 @@ const ColumnHome: React.FC<ColumnHomeProps> = () => {
 
             </div>
 
-            <div className='bg-[#F1F2F4] px-14 py-5 flex items-center justify-between'>
-
+            <div className='flex items-start pt-[30px] justify-between bg-[#F1F2F4] px-8'>
                 {
-                    colArr.map((item: any, inx: number) => (
-
-                        <div key={inx} className='w-[230px] bg-[#fff] rounded-[12px] px-4 py-4'>
-
-                            <div className='flex items-center justify-between mb-[30px]'>
-                                <h2 className='text-[23px] h-[50px] font-bold'>{item.name}</h2>
-                                <div className='w-[30px] h-[27px] text-[#fff] text-[16px] font-bold bg-[#22B5DC] flex items-center justify-center rounded-[50%]'>3</div>
-                            </div>
-
-                            <UserCart />
-
-                        </div>
-
-                    ))
+                    colArr.map((item: any, inx: number) => <Categories key={inx} item={item} />)
                 }
-
-
-
             </div>
 
-        </div>
+
+
+
+        </div >
     );
 };
 

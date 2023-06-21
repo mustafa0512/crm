@@ -1,16 +1,21 @@
 import React from 'react';
 
 interface UserCartProps {
-
+    item: any
 }
 
-const UserCart: React.FC<UserCartProps> = () => {
+
+
+const UserCart: React.FC<UserCartProps> = ({ item }) => {
+
     return (
-        <div className='px-2 py-4 w-[200px] bg-[#F1F2F4] rounded-[14px] '>
+        <div
+            draggable={true}
+            className='px-2 py-4 w-[200px] bg-[#F1F2F4] rounded-[14px] mt-[20px] cursor-pointer'>
 
-            <h1 className='font-semibold text-[18px] mb-[15px]'>Борисова  Ольга</h1>
+            <h1 className='font-semibold text-[18px] mb-[15px]'>{item.client}</h1>
 
-            <p className='text-[14px] text-[#909090]'>36 лет, <span>Ташкент</span>, Хан Анна </p>
+            <p className='text-[14px] text-[#909090]'>{item.date} <span> {item.city}</span>, Хан Анна </p>
 
             <div>
 

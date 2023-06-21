@@ -99,7 +99,7 @@
     },
     {
       "branch": "Осло",
-      "status": "Вылетел",
+      "status": "Проблемы с клиентом",
       "hotel": "Exclusive Gramado by Gramado Parks",
       "cost": 230000,
       "takeOff": "В: 30 января, 2023 | 06:35",
@@ -115,7 +115,7 @@
       "id": 6
     },
     {
-      "status": "Оплачен полностью",
+      "status": "Проблемы с клиентом",
       "hotel": "Hotel Verdandi Oslo",
       "cost": 230000,
       "takeOff": "В: 30 января, 2023 | 06:35",
@@ -132,7 +132,7 @@
     },
     {
       "branch": "Нью Йорк",
-      "status": "Новое обращение",
+      "status": "Проблемы с клиентом",
       "hotel": "Riu Plaza New York Times Square",
       "cost": 230000,
       "takeOff": "В: 30 января, 2023 | 06:35",
@@ -165,7 +165,7 @@
       "id": 9
     },
     {
-      "status": "Оплачен полностью",
+      "status": "Прилетел",
       "hotel": "Hotel Verdandi Oslo",
       "cost": 230000,
       "takeOff": "В: 30 января, 2023 | 06:35",
@@ -199,7 +199,7 @@
     },
     {
       "branch": "Осло",
-      "status": "Вылетел",
+      "status": "Прилетел",
       "hotel": "Exclusive Gramado by Gramado Parks",
       "cost": 230000,
       "takeOff": "В: 30 января, 2023 | 06:35",
