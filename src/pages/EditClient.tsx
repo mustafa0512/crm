@@ -27,6 +27,25 @@ type typeHotel = {
     exampleRequired: string;
 };
 
+type typeClient = {
+    id: number
+    client: string;
+    date: string;
+    email: string;
+    city: string;
+    status: string;
+    telNumber: number;
+    branch: string;
+    secTelNumber: number;
+    hotel: string
+    from_city: string
+    to_city: string
+    cost: number
+    takeOff: string
+    arrive: string
+    exampleRequired: string;
+};
+
 
 interface EditClientProps {
 
@@ -34,12 +53,15 @@ interface EditClientProps {
 
 const EditClient: React.FC<EditClientProps> = () => {
     const [hotel, setHotel] = useState<Array<typeHotel>>([]);
+    const [person, setPerson] = useState<Array<typeClient>>([]);
     const [branches, setBranches] = useState<string | undefined>();
     const [statuses, setStatuses] = useState<string | undefined>();
     const [hotels, setHotels] = useState<string | undefined>();
 
-    const id = window.location.href.split("/").at(-1);
+    const id: any = window.location.href.split("/").at(-1);
+    const filPerson = person.filter(item => item.id === +id)
 
+    console.log(filPerson);
 
 
     const {
@@ -59,7 +81,8 @@ const EditClient: React.FC<EditClientProps> = () => {
             city: data.city,
             telNumber: data.telNumber,
             from_city: data.from_city,
-            to_city: data.to_city
+            to_city: data.to_city,
+            secTelNumber: data.secTelNumber
         })
             .then(res => console.log(res.data))
 
@@ -76,6 +99,17 @@ const EditClient: React.FC<EditClientProps> = () => {
 
     }, []);
 
+    useEffect(() => {
+
+        const getUsers = async () => {
+            const res = await axios.get(BASE_URL + "/customers")
+            setPerson(res.data);
+        }
+
+        getUsers()
+
+    }, []);
+
     const navigate = useNavigate();
     const getLocalUser: any = localStorage.getItem("user")
 
@@ -85,14 +119,15 @@ const EditClient: React.FC<EditClientProps> = () => {
         navigate('/signin')
     }
 
-
-
     return (
         <div>
             <div className="flex items-center justify-between max-w-[1470px] m-auto px-6 mb-[50px]">
-                <div className="w-[440px] flex items-center justify-between">
-                    <h1 className="text-[36px] text-[#000] font-semibold">
-                        Добавить клиента
+                <div className="min-w-[130px] flex items-center justify-between">
+                    <Link to={'/'} >
+                        <img src="/img/chevron-left.svg" alt="" />
+                    </Link>
+                    <h1 className="text-[36px] ml-[20px] text-[#000] font-semibold">
+                        {filPerson[0]?.client}
                     </h1>
                 </div>
             </div>
@@ -110,6 +145,7 @@ const EditClient: React.FC<EditClientProps> = () => {
                                         className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333]"
                                         type="text"
                                         {...register("client", { pattern: /^[A-Za-z]+$/i, required: true, maxLength: 20 })}
+                                        placeholder={filPerson[0]?.client}
                                     />
                                 </label>
 
@@ -128,6 +164,7 @@ const EditClient: React.FC<EditClientProps> = () => {
                                             className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[260px] outline-none py-2 px-3 text-[#333333]"
                                             type="text"
                                             {...register("city", { pattern: /^[A-Za-z]+$/i, required: true, maxLength: 20 })}
+                                            placeholder={filPerson[0]?.city}
                                         />
                                     </label>
                                 </div>
@@ -140,6 +177,7 @@ const EditClient: React.FC<EditClientProps> = () => {
                                                 className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[260px] outline-none py-2 px-3 text-[#333333]"
                                                 type="number"
                                                 {...register("telNumber", { required: true, pattern: /^[0-9+-]+$/ })}
+                                                value={filPerson[0]?.telNumber}
                                             />
                                         </label>
                                         <label>
@@ -148,6 +186,7 @@ const EditClient: React.FC<EditClientProps> = () => {
                                                 className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[260px] outline-none py-2 px-3 text-[#333333]"
                                                 type="email"
                                                 {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
+                                                placeholder={filPerson[0]?.email}
                                             />
                                         </label>
                                     </div>
@@ -156,6 +195,7 @@ const EditClient: React.FC<EditClientProps> = () => {
                                             className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[260px] outline-none py-2 px-3 text-[#333333]"
                                             type="number"
                                             {...register("secTelNumber", { required: true, pattern: /^[0-9+-]+$/ })}
+                                            value={filPerson[0]?.telNumber}
                                         />
                                     </label>
                                 </div>
@@ -168,6 +208,7 @@ const EditClient: React.FC<EditClientProps> = () => {
                                         className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333] mb-[20px]"
                                         onClick={(e: any) => setStatuses(e.target.value)}
                                     >
+                                        <option value={filPerson[0]?.status}>{filPerson[0]?.status}</option>
                                         <option value="Новое обращение">Новое обращение</option>
                                         <option value="Предоплата">Предоплата</option>
                                         <option value="Оплачен полностью">Оплачен полностью</option>
@@ -183,6 +224,7 @@ const EditClient: React.FC<EditClientProps> = () => {
                                         className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333] mb-[20px]"
                                         onClick={(e: any) => setBranches(e.target.value)}
                                     >
+                                        <option value={filPerson[0]?.branch} >{filPerson[0]?.branch}</option>
                                         <option value="Анкара">Анкара</option>
                                         <option value="Нью Йорк">Нью Йорк</option>
                                         <option value="Берлин">Берлин</option>
@@ -199,6 +241,7 @@ const EditClient: React.FC<EditClientProps> = () => {
                                             className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[260px] outline-none py-2 px-3 text-[#333333]"
                                             type="text"
                                             {...register("from_city", { pattern: /^[A-Za-z]+$/i })}
+                                            placeholder={filPerson[0]?.from_city}
 
                                         />
                                     </label>
@@ -208,6 +251,7 @@ const EditClient: React.FC<EditClientProps> = () => {
                                             className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[260px] outline-none py-2 px-3 text-[#333333]"
                                             type="text"
                                             {...register("to_city", { pattern: /^[A-Za-z]+$/i })}
+                                            placeholder={filPerson[0]?.to_city}
                                         />
                                     </label>
                                 </div>
@@ -218,6 +262,8 @@ const EditClient: React.FC<EditClientProps> = () => {
                                         className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333] mb-[20px]"
                                         onClick={(e: any) => setHotels(e.target.value)}
                                     >
+                                        <option value={filPerson[0]?.hotel} >{filPerson[0]?.hotel}</option>
+
                                         {
                                             hotel.map(item => <option key={item.id} value="The Ankara Hotel">{item.hotelName}</option>)
                                         }
