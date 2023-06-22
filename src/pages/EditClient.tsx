@@ -4,6 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 let BASE_URL: string = "http://localhost:3103";
 
+interface delComProps { }
 
 
 type Inputs = {
@@ -46,7 +47,13 @@ type typeClient = {
     exampleRequired: string;
 };
 
-
+type typeBranch = {
+    id: number
+    city: string;
+    branchName: string;
+    telNumber: number;
+    exampleRequired: string;
+};
 interface EditClientProps {
 
 }
@@ -54,6 +61,7 @@ interface EditClientProps {
 const EditClient: React.FC<EditClientProps> = () => {
     const [hotel, setHotel] = useState<Array<typeHotel>>([]);
     const [person, setPerson] = useState<Array<typeClient>>([]);
+    const [branch, setBranch] = useState<Array<typeBranch>>([]);
     const [branches, setBranches] = useState<string | undefined>();
     const [statuses, setStatuses] = useState<string | undefined>();
     const [hotels, setHotels] = useState<string | undefined>();
@@ -109,6 +117,24 @@ const EditClient: React.FC<EditClientProps> = () => {
         getUsers()
 
     }, []);
+
+    useEffect(() => {
+
+        const getBranch = async () => {
+            const res = await axios.get(BASE_URL + "/branches")
+            setBranch(res.data);
+        }
+
+        getBranch()
+
+    }, []);
+
+    const delComment: React.FC<delComProps> = () => {
+
+        axios.delete(BASE_URL + `/customers/${id}`)
+            .then(res => console.log(res.data))
+
+    }
 
     const navigate = useNavigate();
     const getLocalUser: any = localStorage.getItem("user")
@@ -225,12 +251,9 @@ const EditClient: React.FC<EditClientProps> = () => {
                                         onClick={(e: any) => setBranches(e.target.value)}
                                     >
                                         <option value={filPerson[0]?.branch} >{filPerson[0]?.branch}</option>
-                                        <option value="Анкара">Анкара</option>
-                                        <option value="Нью Йорк">Нью Йорк</option>
-                                        <option value="Берлин">Берлин</option>
-                                        <option value="Осло">Осло</option>
-                                        <option value="Грамаду">Грамаду</option>
-                                        <option value="Стамбул">Стамбул</option>
+                                        {
+                                            branch.map((item: any, inx: number) => <option key={inx} value={item.city}>{item.city}</option>)
+                                        }
                                     </select>
                                 </label>
 
@@ -265,7 +288,7 @@ const EditClient: React.FC<EditClientProps> = () => {
                                         <option value={filPerson[0]?.hotel} >{filPerson[0]?.hotel}</option>
 
                                         {
-                                            hotel.map(item => <option key={item.id} value="The Ankara Hotel">{item.hotelName}</option>)
+                                            hotel.map(item => <option key={item.id} value={item.hotelName}>{item.hotelName}</option>)
                                         }
                                     </select>
                                 </label>
@@ -277,8 +300,11 @@ const EditClient: React.FC<EditClientProps> = () => {
                                 Сохранить
                             </button>
                             <Link to={'/'}>
-                                <button className="w-[200px] py-5 bg-[#EB5757] text-[#fff] font-semibold rounded-[8px]">
-                                    Отменить
+                                <button
+                                    onClick={delComment}
+                                    className="w-[200px] py-5 bg-[#EB5757] text-[#fff] font-semibold rounded-[8px]"
+                                >
+                                    Удалить
                                 </button>
                             </Link>
 

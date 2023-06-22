@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import axios from 'axios';
@@ -23,32 +23,25 @@ interface MapModalProps {
     comID: number
 }
 
-interface editComProps {
-    id: number
-}
-
 type Inputs = {
     comment: string;
     exampleRequired: string;
 };
 
 const MapModal: React.FC<MapModalProps> = ({ open, handleClose, comID }) => {
-    const [areaValue, setAreaValue] = useState<any>();
 
     const {
         register,
         handleSubmit
     } = useForm<Inputs>();
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => setAreaValue(data)
-
-    const changeComment: React.FC<editComProps> = () => {
-
+    const onSubmit: SubmitHandler<Inputs> = (data) => {
         axios.patch(BASE_URL + `/blog/${comID}`, {
-            comment: areaValue?.comment
+            comment: data?.comment
         })
             .then(res => console.log(res.data))
     }
+
 
     return (
         <div>
@@ -67,7 +60,7 @@ const MapModal: React.FC<MapModalProps> = ({ open, handleClose, comID }) => {
                         </label>
 
                         <div className='mt-[30px] '>
-                            <button onClick={() => changeComment()} className='border-[#333333] border-[1px]  text-[#333333] w-[150px] py-2'>Сохранить</button>
+                            <button className='border-[#333333] border-[1px]  text-[#333333] w-[150px] py-2'>Сохранить</button>
                             <button type='button' onClick={handleClose} className='bg-[#333333] text-[#fff] w-[150px] py-2 ms-3'>Отмена</button>
                         </div>
                     </form>

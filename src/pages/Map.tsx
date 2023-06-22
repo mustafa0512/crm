@@ -14,10 +14,11 @@ interface delComProps {
 
 const Map: React.FC<MapProps> = () => {
     const [comment, setComment] = useState<Array<string>>([]);
-    const navigate = useNavigate();
-    const getLocalUser: any = localStorage.getItem("fullUser")
     const [comID, setComID] = useState<string>()
+    const [open, setOpen] = useState(false);
 
+    const getLocalUser: any = localStorage.getItem("fullUser")
+    const navigate = useNavigate();
     const local_user = JSON.parse(getLocalUser)
 
     useEffect(() => {
@@ -44,7 +45,7 @@ const Map: React.FC<MapProps> = () => {
 
     }
 
-    const [open, setOpen] = React.useState(false);
+
     const handleOpen = (id) => {
         setOpen(true)
         setComID(id)
@@ -55,17 +56,15 @@ const Map: React.FC<MapProps> = () => {
         location.reload()
     }
 
-    const commentID: number = 0
-
     return (
         <div>
 
-            <iframe className='h-[85%] w-[100%] absolute z-[-1]' src='//www.zeemaps.com/pub?group=4727803&x=9.921997&y=54.693764&z=16'></iframe>
+            <iframe className='h-[85%] w-[100%] absolute z-[-1]' src='//www.zeemaps.com/pub?group=4730449'></iframe>
 
             <div className='forNoScroll px-20 py-14 h-[600px] w-[760px] overflow-y-scroll fixed top-[100px] right-[-30px]' >
 
                 {
-                    comment.map((item, inx) => (
+                    comment.map((item: any, inx: number) => (
                         <div key={inx} className='w-[570px] min-h-[200px] bg-[#fff] mt-[30px] rounded-[12px] px-6 py-7 flex flex-col justify-between'>
 
                             <div className='flex items-center mb-[30px]'>

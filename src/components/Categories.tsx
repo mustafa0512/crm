@@ -40,15 +40,14 @@ const Categories: React.FC<CategoriesProps> = ({ item }) => {
         getUsers()
 
     }, []);
-    
+
     return (
         <div className='w-[240px] bg-[#fff] rounded-[12px] px-4 py-4'>
 
             <div className='flex items-center justify-between mb-[30px]'>
                 <h2 className='text-[23px] h-[50px] font-bold'>{item.name}</h2>
-                <div className='w-[30px] h-[27px] text-[#fff] text-[16px] font-bold bg-[#22B5DC] flex items-center justify-center rounded-[50%]'>3</div>
+                <div className='w-[30px] h-[27px] text-[#fff] text-[16px] font-bold bg-[#22B5DC] flex items-center justify-center rounded-[50%]'>{fildCat.length}</div>
             </div>
-
             {
                 fildCat.map((item: any, inx: number) => <UserCart key={inx} item={item} />)
             }
