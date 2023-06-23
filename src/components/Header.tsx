@@ -13,6 +13,7 @@ import Checkbox from "@mui/material/Checkbox";
 import { Link } from "react-router-dom";
 import { FormControlLabel, FormGroup } from "@mui/material";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 let BASE_URL: string = "http://localhost:3103";
 
 interface HeaderProps { }
@@ -109,6 +110,14 @@ const Header: React.FC<HeaderProps> = () => {
 
     // searching()
 
+    const { t, i18n } = useTranslation()
+
+    const changeLanguage = (lang: string) => {
+        i18n.changeLanguage(lang);
+    }
+
+
+
     const id = window.location.href.split("/").at(-1);
 
     const headBtn = () => {
@@ -118,7 +127,7 @@ const Header: React.FC<HeaderProps> = () => {
                     <div className="flex items-center">
                         <img src="/img/plus-circle.svg" className="w-[20px]" alt="" />
                         <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">
-                            Создать агентства
+                            {t('createAgency')}
                         </p>
                     </div>
                 </Link>
@@ -129,7 +138,7 @@ const Header: React.FC<HeaderProps> = () => {
                     <div className="flex items-center">
                         <img src="/img/plus-circle.svg" className="w-[20px]" alt="" />
                         <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">
-                            Создать отель
+                            {t('createHotel')}
                         </p>
                     </div>
                 </Link>
@@ -140,7 +149,7 @@ const Header: React.FC<HeaderProps> = () => {
                     <div className="flex items-center">
                         <img src="/img/plus-circle.svg" className="w-[20px]" alt="" />
                         <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">
-                            Создать филиалы
+                            {t('createBranch')}
                         </p>
                     </div>
                 </Link>
@@ -151,7 +160,7 @@ const Header: React.FC<HeaderProps> = () => {
                     <div className="flex items-center">
                         <img src="/img/plus-circle.svg" className="w-[20px]" alt="" />
                         <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">
-                            Создать клиента
+                            {t('createClient')}
                         </p>
                     </div>
                 </Link>
@@ -167,7 +176,7 @@ const Header: React.FC<HeaderProps> = () => {
                     <img src="/img/settings.svg" className="w-[20px]" alt="" />
                     <Link to={'/blog'}>
                         <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">
-                            Создать блог
+                            {t('createBlog')}
                         </p>
                     </Link>
                 </div>
@@ -178,7 +187,7 @@ const Header: React.FC<HeaderProps> = () => {
                     <img src="/img/settings.svg" className="w-[20px]" alt="" />
                     <Link to={'/map'}>
                         <p className="text-[#B5B5B5FF] ml-[15px] text-[16px]">
-                            Посмотреть блог
+                            {t('showBlog')}
                         </p>
                     </Link>
                 </div>
@@ -245,7 +254,7 @@ const Header: React.FC<HeaderProps> = () => {
                                         type="text"
                                         className="text-[#B5B5B5FF] ml-[15px] text-[14px] outline-none"
                                         onKeyUp={(e: any) => setSearhc(e.target.value)}
-                                        placeholder="Поиск..."
+                                        placeholder={t('search')}
                                     />
                                 </form>
                                 <div className="flex items-center">
@@ -256,12 +265,13 @@ const Header: React.FC<HeaderProps> = () => {
                                             className="text-[#B5B5B5FF] text-[20px] outline-none list-none"
                                             name=""
                                             id="select"
+                                            onClick={(e: any) => changeLanguage(e.target.value)}
                                         >
                                             <option className=" hover:bg-[red]" value="ru">
-                                                RU
+                                                {t('ruLang')}
                                             </option>
                                             <option className="list-none" value="eng">
-                                                ENG
+                                                {t('enLang')}
                                             </option>
                                         </select>
                                     </div>
@@ -315,23 +325,23 @@ const Header: React.FC<HeaderProps> = () => {
                                 <div className="flex items-end ">
                                     <img src="/img/home.svg" alt="" />
                                     <p className="text-[18px] text-[#fff] font-semibold ml-[10px]">
-                                        Меню
+                                        {t("menu")}
                                     </p>
                                 </div>
                             </Link>
 
                             <nav className="flex flex-col justify-between h-[130px] pl-10 mt-[15px] text-[16px] text-[#fff] ">
                                 <Link to={"/"}>
-                                    <p>Клиенты</p>
+                                    {t("client")}
                                 </Link>
                                 <Link to={"/hotel"}>
-                                    <p>Отели</p>
+                                    {t("hotel")}
                                 </Link>
                                 <Link to={"/agency"}>
-                                    <p>Тур Агентства</p>
+                                    {t("agency")}
                                 </Link>
                                 <Link to={"/branches"}>
-                                    <p>Филиалы</p>
+                                    {t("branch")}
                                 </Link>
                             </nav>
                         </div>
@@ -342,44 +352,44 @@ const Header: React.FC<HeaderProps> = () => {
                             <div className="flex items-end mb-[30px]">
                                 <img src="/img/filter.svg" alt="" />
                                 <p className="text-[18px] text-[#fff] font-semibold ml-[10px]">
-                                    Фильтр
+                                    {t('filter')}
                                 </p>
                             </div>
 
                             <p className="text-[18px] text-[#fff] font-medium mb-[15px]">
-                                Статус
+                                {t('status')}
                             </p>
 
                             <FormGroup>
                                 <FormControlLabel
                                     sx={{ color: "#fff", fontSize: "16px" }}
                                     control={<Checkbox sx={{ color: "#B5B5B5FF" }} />}
-                                    label="Новое"
+                                    label={t('new')}
                                 />
                                 <FormControlLabel
                                     sx={{ color: "#fff", fontSize: "16px" }}
                                     control={<Checkbox sx={{ color: "#B5B5B5FF" }} />}
-                                    label="Запрос отправлен"
+                                    label={t('requestSent')}
                                 />
                                 <FormControlLabel
                                     sx={{ color: "#fff", fontSize: "16px" }}
                                     control={<Checkbox sx={{ color: "#B5B5B5FF" }} />}
-                                    label="В процессе"
+                                    label={t('process')}
                                 />
                                 <FormControlLabel
                                     sx={{ color: "#fff", fontSize: "16px" }}
                                     control={<Checkbox sx={{ color: "#B5B5B5FF" }} />}
-                                    label="Забронировал"
+                                    label={t('booked')}
                                 />
                                 <FormControlLabel
                                     sx={{ color: "#fff", fontSize: "16px" }}
                                     control={<Checkbox sx={{ color: "#B5B5B5FF" }} />}
-                                    label="Выкупил билеты"
+                                    label={t('tickets')}
                                 />
                                 <FormControlLabel
                                     sx={{ color: "#fff", fontSize: "16px" }}
                                     control={<Checkbox sx={{ color: "#B5B5B5FF" }} />}
-                                    label="Прибыл"
+                                    label={t('arrived')}
                                 />
                             </FormGroup>
                         </div>

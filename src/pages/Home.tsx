@@ -138,14 +138,16 @@ const Home: React.FC<HomeProps> = () => {
                         {currentUser.map((row) => (
                             <TableRow
                                 key={row.id}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 }, height: '80px' }}
+                                sx={{ '&:last-child td, &:last-child th': { border: 0 }, height: '76px' }}
                             >
-                                <Link to={`/editclient/${row?.id}`} >
-                                    <TableCell sx={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 500, marginTop: '10px' }} component="th" scope="row">
-                                        <img className='mr-[30px]' src="/img/dash.svg" alt="" />
-                                        {row.client}
-                                    </TableCell>
-                                </Link>
+                                <TableCell component="th" scope="row">
+                                    <Link to={`/editclient/${row?.id}`} >
+                                        <div className='flex items-center text-[16px] font-medium mt-[10px]'>
+                                            <img className='mr-[30px]' src="/img/dash.svg" alt="" />
+                                            {row.client}
+                                        </div>
+                                    </Link>
+                                </TableCell>
                                 <TableCell sx={{ fontWeight: 500, fontSize: '14px' }} align="right">{row.status}</TableCell>
                                 <TableCell sx={{ fontWeight: 500, fontSize: '14px' }} align="center">{row.date}</TableCell>
                                 <TableCell sx={{ fontWeight: 500, fontSize: '14px' }} align="center">{row.from_city}</TableCell>
