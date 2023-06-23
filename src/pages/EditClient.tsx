@@ -144,6 +144,7 @@ const EditClient: React.FC<EditClientProps> = () => {
     if (getLocalUser?.length === 0 || getLocalUser === null) {
         navigate('/signin')
     }
+    
 
     return (
         <div>

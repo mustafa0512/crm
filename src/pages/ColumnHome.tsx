@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Categories from '../components/Categories';
+import { useTranslation } from 'react-i18next';
 interface ColumnHomeProps {
 
 }
@@ -34,6 +35,7 @@ let colArr: any = [
 ]
 
 const ColumnHome: React.FC<ColumnHomeProps> = () => {
+
     return (
         <div>
             <div className='flex items-center justify-between max-w-[1470px] m-auto px-6'>

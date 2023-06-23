@@ -20,5 +20,12 @@
     "process": "In process",
     "booked": "Booked",
     "tickets": "Bought tickets",
-    "arrived": "Arrived"
+    "arrived": "Arrived",
+    "next": "Next",
+    "prev": "Prev",
+    "date": "Date of application",
+    "departure": "Departure",
+    "visit": "Country of visit",
+    "cost": "Total cost",
+    "arrival": "Departure and arrival"
 }

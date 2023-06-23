@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 let BASE_URL: string = "http://localhost:3103";
 
 
@@ -82,6 +83,8 @@ const Home: React.FC<HomeProps> = () => {
         navigate('/signin')
     }
 
+    const { t } = useTranslation()
+
 
 
     return (
@@ -91,11 +94,11 @@ const Home: React.FC<HomeProps> = () => {
 
                 <div>
 
-                    <div className='w-[300px] flex items-center justify-between'>
+                    <div className='min-w-[100px] flex items-center justify-between'>
 
-                        <h1 className='text-[36px] text-[#000] font-semibold'>Клиенты</h1>
+                        <h1 className='text-[36px] text-[#000] font-semibold'>{t('client')}</h1>
 
-                        <div className='w-[70px] flex justify-between'>
+                        <div className='w-[70px] flex justify-between ml-[40px]'>
                             <Link to={'/column'}>
                                 <img src="/img/buttonRow.svg" className='w-[22px]' alt="" />
                             </Link>
@@ -109,13 +112,13 @@ const Home: React.FC<HomeProps> = () => {
                     <p className='text-[#828282] text-[14px]'>{lastUserIndex} из {totalUser}</p>
 
                     <div className='flex items-center justify-between min-w-[230px] h-[50px] text-[18px] text-[#414141] ml-[30px] rounded-[8px] border-[1px] border-[#DEE2E6] px-1 cursor-pointer'>
-                        <button onClick={prevPage} className='h-[50px] border-r-[1px] border-[#DEE2E6] px-2'>Prev</button>
+                        <button onClick={prevPage} className='h-[50px] border-r-[1px] border-[#DEE2E6] px-2'>{t('prev')}</button>
                         {
                             pageNumbers.map(num => (
                                 <p key={num} onClick={() => paginate(num)} className='hover:underline ml-2 mr-2'>{num}</p>
                             ))
                         }
-                        <button onClick={nextPage} className='h-[50px] border-l-[1px] border-[#DEE2E6] px-2'>Next</button>
+                        <button onClick={nextPage} className='h-[50px] border-l-[1px] border-[#DEE2E6] px-2'>{t('next')}</button>
                     </div>
                 </div>
 
@@ -125,13 +128,13 @@ const Home: React.FC<HomeProps> = () => {
                 <Table sx={{ minWidth: 650, }} aria-label="simple table">
                     <TableHead>
                         <TableRow sx={{ height: '80px' }} >
-                            <TableCell sx={{ color: '#828282', fontSize: '13px' }}>Клиент</TableCell>
-                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align='center' >Статус</TableCell>
-                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="center">Дата обращения</TableCell>
-                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="center">Вылет</TableCell>
-                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="center">Страна посещения</TableCell>
-                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="center">Общая стоимость</TableCell>
-                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="center">Вылет и прилет</TableCell>
+                            <TableCell sx={{ color: '#828282', fontSize: '13px' }}>{t('client')}</TableCell>
+                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align='center' >{t('status')}</TableCell>
+                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="center">{t('date')}</TableCell>
+                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="center">{t('departure')}</TableCell>
+                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="center">{t('visit')}</TableCell>
+                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="center">{t('cost')}</TableCell>
+                            <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="center">{t('arrival')}</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
