@@ -33,5 +33,15 @@
     "perNight": "Price per night",
     "telNumber": "Number",
     "info": "General information",
-    "hotelName": "Hotel Names"
+    "hotelName": "Hotel Names",
+    "name": "Name",
+    "birthDade": "Date of birth",
+    "liveCity": "City of residence",
+    "patuentPhone": "Patient's phone number",
+    "takeoff": "Departure from the city",
+    "addClient": "Add a client",
+    "addHotel": "Add a hotel",
+    "save": "Save",
+    "cancel": "Cancel",
+    "del": "Delete"
 }

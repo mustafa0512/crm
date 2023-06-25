@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 let BASE_URL: string = "http://localhost:3103";
 
 interface AddClientProps { }
@@ -27,13 +28,31 @@ type typeHotel = {
     exampleRequired: string;
 };
 
+type typeBranch = {
+    id: number
+    city: string;
+    branchName: string;
+    telNumber: number;
+    exampleRequired: string;
+}
 
 const AddClient: React.FC<AddClientProps> = () => {
     const [hotel, setHotel] = useState<Array<typeHotel>>([]);
     const [branches, setBranches] = useState<string | undefined>();
     const [statuses, setStatuses] = useState<string | undefined>();
     const [hotels, setHotels] = useState<string | undefined>();
+    const [branch, setBranch] = useState<Array<typeBranch>>([]);
 
+    useEffect(() => {
+
+        const getBranch = async () => {
+            const res = await axios.get(BASE_URL + "/branches")
+            setBranch(res.data);
+        }
+
+        getBranch()
+
+    }, []);
     const {
         register,
         handleSubmit,
@@ -67,6 +86,8 @@ const AddClient: React.FC<AddClientProps> = () => {
 
     }, []);
 
+    const { t } = useTranslation()
+
     const navigate = useNavigate();
     const getLocalUser: any = localStorage.getItem("user")
 
@@ -82,20 +103,20 @@ const AddClient: React.FC<AddClientProps> = () => {
             <div className="flex items-center justify-between max-w-[1470px] m-auto px-6 mb-[50px]">
                 <div className="w-[440px] flex items-center justify-between">
                     <h1 className="text-[36px] text-[#000] font-semibold">
-                        Добавить клиента
+                        {t('addClient')}
                     </h1>
                 </div>
             </div>
 
             <div className="bg-[#F1F2F4] flex items-center justify-center py-5">
                 <div className="w-[1280px] bg-[#fff] px-10 py-6 rounded-[14px]">
-                    <span className="text-[22px] text-[#22B5DC] ">Общая информация</span>
+                    <span className="text-[22px] text-[#22B5DC] ">{t('info')}</span>
 
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="mt-[30px] flex justify-between">
                             <div className="text-[#333333] text-[18px]">
                                 <label>
-                                    <p className="font-semibold">ФИО</p>
+                                    <p className="font-semibold">{t('name')}</p>
                                     <input
                                         className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333]"
                                         type="text"
@@ -105,7 +126,7 @@ const AddClient: React.FC<AddClientProps> = () => {
 
                                 <div className="flex justify-between items-center mt-[20px]">
                                     <label>
-                                        <p className="font-semibold">Дата рождения</p>
+                                        <p className="font-semibold">{t('birthDade')}</p>
                                         <input
                                             className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[260px] outline-none py-2 px-3 text-[#333333] select-none"
                                             type="date"
@@ -113,7 +134,7 @@ const AddClient: React.FC<AddClientProps> = () => {
                                         />
                                     </label>
                                     <label>
-                                        <p className="font-semibold">Город проживания</p>
+                                        <p className="font-semibold">{t('liveCity')}</p>
                                         <input
                                             className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[260px] outline-none py-2 px-3 text-[#333333]"
                                             type="text"
@@ -125,7 +146,7 @@ const AddClient: React.FC<AddClientProps> = () => {
                                 <div>
                                     <div className="flex justify-between items-center mt-[20px]">
                                         <label>
-                                            <p className="font-semibold">Телефон пациента</p>
+                                            <p className="font-semibold">{t('patuentPhone')}</p>
                                             <input
                                                 className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[260px] outline-none py-2 px-3 text-[#333333]"
                                                 type="number"
@@ -153,7 +174,7 @@ const AddClient: React.FC<AddClientProps> = () => {
 
                             <div className="text-[#333333] text-[18px]">
                                 <label>
-                                    <p className="font-semibold">Статус</p>
+                                    <p className="font-semibold">{t('status')}</p>
                                     <select
                                         className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333] mb-[20px]"
                                         onClick={(e: any) => setStatuses(e.target.value)}
@@ -168,23 +189,20 @@ const AddClient: React.FC<AddClientProps> = () => {
                                 </label>
 
                                 <label>
-                                    <p className="font-semibold">Филиал</p>
+                                    <p className="font-semibold">{t('branch')}</p>
                                     <select
                                         className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333] mb-[20px]"
                                         onClick={(e: any) => setBranches(e.target.value)}
                                     >
-                                        <option value="Анкара">Анкара</option>
-                                        <option value="Нью Йорк">Нью Йорк</option>
-                                        <option value="Берлин">Берлин</option>
-                                        <option value="Осло">Осло</option>
-                                        <option value="Грамаду">Грамаду</option>
-                                        <option value="Стамбул">Стамбул</option>
+                                        {
+                                            branch.map((item: any, inx: number) => <option key={inx} value={item.city}>{item.city}</option>)
+                                        }
                                     </select>
                                 </label>
 
                                 <div className="flex justify-between items-center mt-[20px]">
                                     <label>
-                                        <p className="font-semibold">Вылет из города</p>
+                                        <p className="font-semibold">{t('takeoff')}</p>
                                         <input
                                             className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[260px] outline-none py-2 px-3 text-[#333333]"
                                             type="text"
@@ -193,7 +211,7 @@ const AddClient: React.FC<AddClientProps> = () => {
                                         />
                                     </label>
                                     <label>
-                                        <p className="font-semibold">Город посещения</p>
+                                        <p className="font-semibold">{t('visit')}</p>
                                         <input
                                             className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[260px] outline-none py-2 px-3 text-[#333333]"
                                             type="text"
@@ -203,7 +221,7 @@ const AddClient: React.FC<AddClientProps> = () => {
                                 </div>
 
                                 <label>
-                                    <p className="font-semibold">Отель</p>
+                                    <p className="font-semibold">{t('hotel')}</p>
                                     <select
                                         className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-[550px] outline-none py-2 px-3 text-[#333333] mb-[20px]"
                                         onClick={(e: any) => setHotels(e.target.value)}
@@ -218,11 +236,11 @@ const AddClient: React.FC<AddClientProps> = () => {
 
                         <div className="w-[440px] m-auto  flex justify-between mt-[50px]">
                             <button className="w-[200px] py-5 bg-[#4992CC] text-[#fff] font-semibold rounded-[8px]">
-                                Сохранить
+                                {t('save')}
                             </button>
                             <Link to={'/'}>
                                 <button className="w-[200px] py-5 bg-[#EB5757] text-[#fff] font-semibold rounded-[8px]">
-                                    Отменить
+                                    {t('cancel')}
                                 </button>
                             </Link>
 

@@ -156,14 +156,14 @@ const EditHotel: React.FC<EditHotelProps> = () => {
 
                         <div className="w-[440px] m-auto  flex justify-between mt-[50px]">
                             <button className="w-[200px] py-5 bg-[#4992CC] text-[#fff] font-semibold rounded-[8px]">
-                                Сохранить
+                                {t('save')}
                             </button>
                             <Link to={'/hotel'}>
                                 <button
                                     onClick={delComment}
                                     className="w-[200px] py-5 bg-[#EB5757] text-[#fff] font-semibold rounded-[8px]"
                                 >
-                                    Удалить
+                                    {t('del')}
                                 </button>
                             </Link>
 
