@@ -27,5 +27,11 @@
     "departure": "Departure",
     "visit": "Country of visit",
     "cost": "Total cost",
-    "arrival": "Departure and arrival"
+    "arrival": "Departure and arrival",
+    "of": "of",
+    "city": "City",
+    "perNight": "Price per night",
+    "telNumber": "Number",
+    "info": "General information",
+    "hotelName": "Hotel Names"
 }

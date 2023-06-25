@@ -15,6 +15,7 @@ import Map from "./pages/Map";
 import BLog from "./pages/BLog";
 import ColumnHome from "./pages/ColumnHome";
 import EditClient from "./pages/EditClient";
+import EditHotel from "./pages/EditHotel";
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
           <Route index path="/blog" element={<BLog />} />
           <Route index path="/column" element={<ColumnHome />} />
           <Route index path="/editclient/:id" element={<EditClient />} />
+          <Route index path="/edithotel/:id" element={<EditHotel />} />
         </Route>
 
       </Routes>

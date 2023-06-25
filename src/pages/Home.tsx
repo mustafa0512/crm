@@ -109,7 +109,7 @@ const Home: React.FC<HomeProps> = () => {
                 </div>
 
                 <div className='flex items-center '>
-                    <p className='text-[#828282] text-[14px]'>{lastUserIndex} из {totalUser}</p>
+                    <p className='text-[#828282] text-[14px]'>{lastUserIndex} {t('of')} {totalUser}</p>
 
                     <div className='flex items-center justify-between min-w-[230px] h-[50px] text-[18px] text-[#414141] ml-[30px] rounded-[8px] border-[1px] border-[#DEE2E6] px-1 cursor-pointer'>
                         <button onClick={prevPage} className='h-[50px] border-r-[1px] border-[#DEE2E6] px-2'>{t('prev')}</button>

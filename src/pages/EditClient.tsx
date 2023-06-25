@@ -4,9 +4,6 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 let BASE_URL: string = "http://localhost:3103";
 
-interface delComProps { }
-
-
 type Inputs = {
     client: string;
     date: string;
@@ -129,7 +126,7 @@ const EditClient: React.FC<EditClientProps> = () => {
 
     }, []);
 
-    const delComment: React.FC<delComProps> = () => {
+    const delComment = () => {
 
         axios.delete(BASE_URL + `/customers/${id}`)
             .then(res => console.log(res.data))
@@ -144,7 +141,7 @@ const EditClient: React.FC<EditClientProps> = () => {
     if (getLocalUser?.length === 0 || getLocalUser === null) {
         navigate('/signin')
     }
-    
+
 
     return (
         <div>
