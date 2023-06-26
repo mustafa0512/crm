@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 let BASE_URL: string = "http://localhost:3103";
 
@@ -40,7 +41,7 @@ const BLog: React.FC<BLogProps> = () => {
         axios.post(BASE_URL + '/blog', data)
             .then(res => console.log(res.data))
     }
-
+    const { t } = useTranslation()
 
     return (
         <div className='flex items-center justify-center'>
@@ -59,10 +60,10 @@ const BLog: React.FC<BLogProps> = () => {
                         </div>
                     </div>
 
-                    <h1 className='text-[24px] text-center font-bold mb-[20px]'>Ваш коментарий</h1>
+                    <h1 className='text-[24px] text-center font-bold mb-[20px]'>{t('comment')}</h1>
 
                     <p className='text-[18px] w-[94%] '>
-                        {areaValue === '' ? 'Закрытое или открытое торговое пространство, включающее множество торговых точек (магазинов и т.д.) Бизнес-центр (лифты, стойка администрации, холл, прилифтовая зона)' : areaValue}
+                        {areaValue === '' ? t('example') : areaValue}
                     </p>
                 </div>
 
@@ -71,14 +72,14 @@ const BLog: React.FC<BLogProps> = () => {
                     <form action="" onSubmit={handleSubmit(onSubmit)}>
 
                         <label>
-                            <p className="font-semibold">Напишите коментарий</p>
-                            <textarea onKeyUp={(e: any) => setAreaValue(e.target.value)} {...register("comment")} className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-full min-h-[80px] h-fit outline-none py-2 px-3 text-[#333333]" ></textarea>
+                            <p className="font-semibold">{t('writeComment')}</p>
+                            <textarea onKeyUp={(e: any) => setAreaValue(e.target.value)} {...register("comment")}    className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-full min-h-[80px] h-fit outline-none py-2 px-3 text-[#333333]" ></textarea>
                         </label>
 
                         <div className='mt-[30px]'>
-                            <button className='border-[#333333] border-[1px]  text-[#333333] w-[200px] py-2'>Сохранить</button>
+                            <button className='border-[#333333] border-[1px]  text-[#333333] w-[200px] py-2'>{t('save')}</button>
                             <Link to={'/map'}>
-                                <button type='button' className='bg-[#333333] text-[#fff] w-[200px] py-2 ms-3'>Выйти</button>
+                                <button type='button' className='bg-[#333333] text-[#fff] w-[200px] py-2 ms-3'>{t('exit')}</button>
                             </Link>
                         </div>
                     </form>

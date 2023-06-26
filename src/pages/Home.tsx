@@ -12,10 +12,8 @@ import { useTranslation } from 'react-i18next';
 let BASE_URL: string = "http://localhost:3103";
 
 
-interface HomeProps {
-    pageNumbers: number[];
-    setCurrentPage: number
-}
+interface HomeProps {}
+
 
 type typeClient = {
     id: number

@@ -47,5 +47,14 @@
     "from": "from",
     "to": "to",
     "agencyName": "Agency names",
-    "addAgency": "Add Agencies"
+    "addAgency": "Add Agencies",
+    "agencies": "Agencies",
+    "tourAgency": "Tour Agencies",
+    "addBranch": "Add a branch",
+    "branchName": "Branch names",
+    "edit": "Edit",
+    "comment": "Your comment",
+    "writeComment": "Write a comment",
+    "exit": "Exit",
+    "example": "Closed or open retail space, including many retail outlets (shops, etc.) Business center (elevators, reception desk, lobby, lift area)"
 }

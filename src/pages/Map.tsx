@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MapModal from '../components/MapModal';
+import { useTranslation } from 'react-i18next';
 let BASE_URL: string = "http://localhost:3103";
 
 interface MapProps { }
@@ -56,6 +57,7 @@ const Map: React.FC<MapProps> = () => {
         location.reload()
     }
 
+    const { t } = useTranslation()
     return (
         <div>
 
@@ -81,8 +83,8 @@ const Map: React.FC<MapProps> = () => {
                             </p>
 
                             <div className='mt-[30px]'>
-                                <button onClick={() => delComment(item.id)} className='bg-[#333333] text-[#fff] w-[200px] py-2 '>Удалить</button>
-                                <button onClick={() => handleOpen(item.id)} className='ms-3 border-[#333333] border-[1px]  text-[#333333] w-[200px] py-2'>Именить</button>
+                                <button onClick={() => delComment(item.id)} className='bg-[#333333] text-[#fff] w-[200px] py-2 '>{t('del')}</button>
+                                <button onClick={() => handleOpen(item.id)} className='ms-3 border-[#333333] border-[1px]  text-[#333333] w-[200px] py-2'>{t('edit')}</button>
                             </div>
 
                         </div>

@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import axios from 'axios';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 let BASE_URL: string = "http://localhost:3103";
 
 const style = {
@@ -42,6 +43,9 @@ const MapModal: React.FC<MapModalProps> = ({ open, handleClose, comID }) => {
             .then(res => console.log(res.data))
     }
 
+    const { t } = useTranslation()
+
+
     return (
         <div>
             <Modal
@@ -54,13 +58,13 @@ const MapModal: React.FC<MapModalProps> = ({ open, handleClose, comID }) => {
                     <form action="" onSubmit={handleSubmit(onSubmit)}>
 
                         <label>
-                            <p className="font-semibold">Напишите коментарий</p>
+                            <p className="font-semibold">{t('writeComment')}</p>
                             <textarea {...register("comment")} className="mt-[15px] border-[1px] border-[#D6D5D5] rounded-[5px] w-full min-h-[80px] h-fit outline-none py-2 px-3 text-[#333333]" ></textarea>
                         </label>
 
                         <div className='mt-[30px] '>
-                            <button className='border-[#333333] border-[1px]  text-[#333333] w-[150px] py-2'>Сохранить</button>
-                            <button type='button' onClick={handleClose} className='bg-[#333333] text-[#fff] w-[150px] py-2 ms-3'>Отмена</button>
+                            <button className='border-[#333333] border-[1px]  text-[#333333] w-[150px] py-2'>{t('save')}</button>
+                            <button type='button' onClick={handleClose} className='bg-[#333333] text-[#fff] w-[150px] py-2 ms-3'>{t('cancel')}</button>
                         </div>
                     </form>
                 </Box>

@@ -8,11 +8,10 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 let BASE_URL: string = "http://localhost:3103";
 
 interface AgencyProps { }
-
-interface PaginationProps { }
 
 type typeClient = {
     id: number
@@ -63,6 +62,9 @@ const Agency: React.FC<AgencyProps> = () => {
         navigate('/signin')
     }
 
+    const { t } = useTranslation()
+
+
     return (
         <div>
             <div className='flex items-center justify-between max-w-[1470px] m-auto px-6'>
@@ -71,23 +73,23 @@ const Agency: React.FC<AgencyProps> = () => {
 
                     <div className='w-[400px] flex items-center justify-between'>
 
-                        <h1 className='text-[36px] text-[#000] font-semibold'>Тур Агентства</h1>
+                        <h1 className='text-[36px] text-[#000] font-semibold'>{t('tourAgency')}</h1>
 
                     </div>
 
                 </div>
 
                 <div className='flex items-center '>
-                    <p className='text-[#828282] text-[14px]'>{lastUserIndex} из {totalAgency}</p>
+                    <p className='text-[#828282] text-[14px]'>{lastUserIndex} {t('of')} {totalAgency}</p>
 
                     <div className='flex items-center justify-between w-[230px] h-[50px] text-[18px] text-[#414141] ml-[30px] rounded-[8px] border-[1px] border-[#DEE2E6] px-1 cursor-pointer'>
-                        <button onClick={prevPage} className='h-[50px] border-r-[1px] border-[#DEE2E6] px-2'>Prev</button>
+                        <button onClick={prevPage} className='h-[50px] border-r-[1px] border-[#DEE2E6] px-2'>{t('prev')}</button>
                         {
                             pageNumbers.map(num => (
                                 <p key={num} onClick={() => paginate(num)} className='hover:underline ml-2 mr-2'>{num}</p>
                             ))
                         }
-                        <button onClick={nextPage} className='h-[50px] border-l-[1px] border-[#DEE2E6] px-2'>Next</button>
+                        <button onClick={nextPage} className='h-[50px] border-l-[1px] border-[#DEE2E6] px-2'>{t('next')}</button>
                     </div>
                 </div>
 
@@ -98,9 +100,9 @@ const Agency: React.FC<AgencyProps> = () => {
                     <Table sx={{ minWidth: 650, }} aria-label="simple table">
                         <TableHead>
                             <TableRow sx={{ height: '80px' }} >
-                                <TableCell sx={{ color: '#828282', fontSize: '13px' }}>Отели</TableCell>
-                                <TableCell sx={{ color: '#828282', fontSize: '13px' }} align='left' >Город</TableCell>
-                                <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="left">Номер</TableCell>
+                                <TableCell sx={{ color: '#828282', fontSize: '13px' }}>{t('agencies')}</TableCell>
+                                <TableCell sx={{ color: '#828282', fontSize: '13px' }} align='left' >{t('city')}</TableCell>
+                                <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="left">{t('telNumber')}</TableCell>
                                 <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="left"></TableCell>
                                 <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="left"></TableCell>
                                 <TableCell sx={{ color: '#828282', fontSize: '13px' }} align="center"></TableCell>
@@ -110,7 +112,7 @@ const Agency: React.FC<AgencyProps> = () => {
                             {currentAgency.map((row) => (
                                 <TableRow
                                     key={row.id}
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 }, height: '80px' }}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 }, height: '77px' }}
                                 >
                                     <TableCell sx={{ display: 'flex', alignItems: 'center', fontSize: '16px', fontWeight: 500, marginTop: '10px' }} component="th" scope="row">
                                         <img className='mr-[30px]' src="/img/dash.svg" alt="" />
