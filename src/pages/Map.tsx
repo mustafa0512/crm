@@ -6,9 +6,9 @@ let BASE_URL: string = "http://localhost:3103";
 
 interface MapProps { }
 
-interface delComProps {
-    id: number
-}
+// interface delComProps {
+//     id: number
+// }
 
 
 
@@ -36,7 +36,7 @@ const Map: React.FC<MapProps> = () => {
         getUsers()
     }, [])
 
-    const delComment: React.FC<delComProps> = (id) => {
+    const delComment = (id: any) => {
 
         axios.delete(BASE_URL + `/blog/${id}`)
             .then(res => console.log(res.data))
@@ -46,7 +46,7 @@ const Map: React.FC<MapProps> = () => {
     }
 
 
-    const handleOpen = (id) => {
+    const handleOpen = (id: any) => {
         setOpen(true)
         setComID(id)
 

@@ -18,9 +18,9 @@ const style = {
 };
 
 interface MapModalProps {
-    handleClose: boolean;
+    handleClose: any;
     open: boolean;
-    comID: number
+    comID: any
 }
 
 type Inputs = {
@@ -41,7 +41,6 @@ const MapModal: React.FC<MapModalProps> = ({ open, handleClose, comID }) => {
         })
             .then(res => console.log(res.data))
     }
-
 
     return (
         <div>

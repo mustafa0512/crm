@@ -22,8 +22,6 @@ type typeClient = {
     exampleRequired: string;
 };
 
-interface PaginationProps { }
-
 const Hotel: React.FC<HotelProps> = () => {
     const [hotel, setHotel] = useState<Array<typeClient>>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
@@ -40,7 +38,7 @@ const Hotel: React.FC<HotelProps> = () => {
     const firstUserIndex = lastUserIndex - hotelPerPage
     const currentHotel = hotel.slice(firstUserIndex, lastUserIndex)
 
-    const paginate: React.FC<PaginationProps> = pageNumbers => setCurrentPage(pageNumbers)
+    const paginate = (pageNumbers: any) => setCurrentPage(pageNumbers)
     const nextPage = () => setCurrentPage(prev => totalHotel <= prev ? prev + 0 : prev + 1)
     const prevPage = () => setCurrentPage(prev => prev <= 1 ? prev - 0 : prev - 1)
 

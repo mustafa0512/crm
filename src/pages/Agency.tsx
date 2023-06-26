@@ -38,7 +38,7 @@ const Agency: React.FC<AgencyProps> = () => {
     const firstUserIndex = lastUserIndex - agencyPerPage
     const currentAgency = agencies.slice(firstUserIndex, lastUserIndex)
 
-    const paginate: React.FC<PaginationProps> = pageNumbers => setCurrentPage(pageNumbers)
+    const paginate = (pageNumbers: any) => setCurrentPage(pageNumbers)
     const nextPage = () => setCurrentPage(prev => totalAgency <= prev ? prev + 0 : prev + 1)
     const prevPage = () => setCurrentPage(prev => prev <= 1 ? prev - 0 : prev - 1)
 

@@ -17,9 +17,6 @@ interface HomeProps {
     setCurrentPage: number
 }
 
-interface PaginationProps { }
-
-
 type typeClient = {
     id: number
     client: string;
@@ -59,7 +56,7 @@ const Home: React.FC<HomeProps> = () => {
     const currentUser = person.slice(firstUserIndex, lastUserIndex)
 
 
-    const paginate: React.FC<PaginationProps> = pageNumbers => setCurrentPage(pageNumbers)
+    const paginate = (pageNumbers: any) => setCurrentPage(pageNumbers)
     const nextPage = () => setCurrentPage(prev => totalUser <= prev ? prev + 0 : prev + 1)
     const prevPage = () => setCurrentPage(prev => prev <= 1 ? prev - 0 : prev - 1)
 

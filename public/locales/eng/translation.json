@@ -45,5 +45,7 @@
     "cancel": "Cancel",
     "del": "Delete",
     "from": "from",
-    "to": "to"
+    "to": "to",
+    "agencyName": "Agency names",
+    "addAgency": "Add Agencies"
 }
