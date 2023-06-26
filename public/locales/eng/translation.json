@@ -43,5 +43,7 @@
     "addHotel": "Add a hotel",
     "save": "Save",
     "cancel": "Cancel",
-    "del": "Delete"
+    "del": "Delete",
+    "from": "from",
+    "to": "to"
 }

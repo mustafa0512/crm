@@ -168,7 +168,6 @@ const Header: React.FC<HeaderProps> = () => {
         }
     };
 
-
     const blogBtn = () => {
         if (id === "map") {
             return (
@@ -191,6 +190,84 @@ const Header: React.FC<HeaderProps> = () => {
                         </p>
                     </Link>
                 </div>
+            );
+        }
+    }
+
+    const comppFilter = () => {
+        if (id === "") {
+            return (
+                <div className="px-4 py-3">
+                    <div className="flex items-end mb-[30px]">
+                        <img src="/img/filter.svg" alt="" />
+                        <p className="text-[18px] text-[#fff] font-semibold ml-[10px]">
+                            {t('filter')}
+                        </p>
+                    </div>
+
+                    <p className="text-[18px] text-[#fff] font-medium mb-[15px]">
+                        {t('status')}
+                    </p>
+                    <FormGroup>
+                        <FormControlLabel
+                            sx={{ color: "#fff", fontSize: "16px" }}
+                            control={<Checkbox sx={{ color: "#B5B5B5FF" }} />}
+                            label={t('new')}
+                        />
+                        <FormControlLabel
+                            sx={{ color: "#fff", fontSize: "16px" }}
+                            control={<Checkbox sx={{ color: "#B5B5B5FF" }} />}
+                            label={t('requestSent')}
+                        />
+                        <FormControlLabel
+                            sx={{ color: "#fff", fontSize: "16px" }}
+                            control={<Checkbox sx={{ color: "#B5B5B5FF" }} />}
+                            label={t('process')}
+                        />
+                        <FormControlLabel
+                            sx={{ color: "#fff", fontSize: "16px" }}
+                            control={<Checkbox sx={{ color: "#B5B5B5FF" }} />}
+                            label={t('booked')}
+                        />
+                        <FormControlLabel
+                            sx={{ color: "#fff", fontSize: "16px" }}
+                            control={<Checkbox sx={{ color: "#B5B5B5FF" }} />}
+                            label={t('tickets')}
+                        />
+                        <FormControlLabel
+                            sx={{ color: "#fff", fontSize: "16px" }}
+                            control={<Checkbox sx={{ color: "#B5B5B5FF" }} />}
+                            label={t('arrived')}
+                        />
+                    </FormGroup>
+                </div>
+            );
+        } else if (id === "hotel") {
+            return (
+                <>
+                    <div className="px-4 py-3">
+                        <div className="flex items-end mb-[30px]">
+                            <img src="/img/filter.svg" alt="" />
+                            <p className="text-[18px] text-[#fff] font-semibold ml-[10px]">
+                                {t('filter')}
+                            </p>
+                        </div>
+
+                        <p className="text-[18px] text-[#fff] font-medium mb-[15px]">
+                            {t('status')}
+                        </p>
+                        <form className="flex items-center justify-between w-[280px]">
+                            <label className="flex border-[#B5B5B5FF] border-[2px] items-center px-3 w-[130px] rounded-[8px]">
+                                <p className="text-[#B5B5B5FF]">{t('from')}</p>
+                                <input type="text" className="outline-none px-3 py-2 bg-[transparent] text-[#B5B5B5FF]" placeholder="5000" />
+                            </label>
+                            <label className="flex border-[#B5B5B5FF] border-[2px] items-center px-3 w-[130px] rounded-[8px]">
+                                <p className="text-[#B5B5B5FF]">{t('to')}</p>
+                                <input type="text" className="outline-none px-3 py-2 bg-[transparent] text-[#B5B5B5FF]" placeholder="150000" />
+                            </label>
+                        </form>
+                    </div>
+                </>
             );
         }
     }
@@ -331,16 +408,16 @@ const Header: React.FC<HeaderProps> = () => {
                             </Link>
 
                             <nav className="flex flex-col justify-between h-[130px] pl-10 mt-[15px] text-[16px] text-[#fff] ">
-                                <Link to={"/"}>
+                                <Link onClick={handleDrawerClose} to={"/"}>
                                     {t("client")}
                                 </Link>
-                                <Link to={"/hotel"}>
+                                <Link onClick={handleDrawerClose} to={"/hotel"}>
                                     {t("hotel")}
                                 </Link>
-                                <Link to={"/agency"}>
+                                <Link onClick={handleDrawerClose} to={"/agency"}>
                                     {t("agency")}
                                 </Link>
-                                <Link to={"/branches"}>
+                                <Link onClick={handleDrawerClose} to={"/branches"}>
                                     {t("branch")}
                                 </Link>
                             </nav>
@@ -348,51 +425,7 @@ const Header: React.FC<HeaderProps> = () => {
                     </List>
                     <List sx={{ background: "#2E2E2EFF", height: "100%" }}>
                         <div className="w-[90%] m-auto border-[1px] border-[#646464]"></div>
-                        <div className="px-4 py-3">
-                            <div className="flex items-end mb-[30px]">
-                                <img src="/img/filter.svg" alt="" />
-                                <p className="text-[18px] text-[#fff] font-semibold ml-[10px]">
-                                    {t('filter')}
-                                </p>
-                            </div>
-
-                            <p className="text-[18px] text-[#fff] font-medium mb-[15px]">
-                                {t('status')}
-                            </p>
-
-                            <FormGroup>
-                                <FormControlLabel
-                                    sx={{ color: "#fff", fontSize: "16px" }}
-                                    control={<Checkbox sx={{ color: "#B5B5B5FF" }} />}
-                                    label={t('new')}
-                                />
-                                <FormControlLabel
-                                    sx={{ color: "#fff", fontSize: "16px" }}
-                                    control={<Checkbox sx={{ color: "#B5B5B5FF" }} />}
-                                    label={t('requestSent')}
-                                />
-                                <FormControlLabel
-                                    sx={{ color: "#fff", fontSize: "16px" }}
-                                    control={<Checkbox sx={{ color: "#B5B5B5FF" }} />}
-                                    label={t('process')}
-                                />
-                                <FormControlLabel
-                                    sx={{ color: "#fff", fontSize: "16px" }}
-                                    control={<Checkbox sx={{ color: "#B5B5B5FF" }} />}
-                                    label={t('booked')}
-                                />
-                                <FormControlLabel
-                                    sx={{ color: "#fff", fontSize: "16px" }}
-                                    control={<Checkbox sx={{ color: "#B5B5B5FF" }} />}
-                                    label={t('tickets')}
-                                />
-                                <FormControlLabel
-                                    sx={{ color: "#fff", fontSize: "16px" }}
-                                    control={<Checkbox sx={{ color: "#B5B5B5FF" }} />}
-                                    label={t('arrived')}
-                                />
-                            </FormGroup>
-                        </div>
+                        {comppFilter()}
                     </List>
                 </Drawer>
                 <Main open={open}>
